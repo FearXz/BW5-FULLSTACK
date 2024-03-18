@@ -1,7 +1,7 @@
-import React from "react";
+
 import { Button, Col, Container, Row } from "react-bootstrap";
 
-function MyMain() {
+function Home() {
   return (
     <Container>
       <Row>
@@ -26,4 +26,4 @@ function MyMain() {
   );
 }
 
-export default MyMain;
+export default Home;
