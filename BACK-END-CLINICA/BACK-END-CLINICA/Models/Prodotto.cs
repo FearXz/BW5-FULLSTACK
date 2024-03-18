@@ -30,5 +30,6 @@ namespace BACK_END_CLINICA.Models
         // navigation property
         public virtual Fornitore Fornitore { get; set; }
         public virtual ICollection<ProdottiVenduti> ProdottiVenduti { get; set; }
+        //MEGA KEBAB
     }
 }
