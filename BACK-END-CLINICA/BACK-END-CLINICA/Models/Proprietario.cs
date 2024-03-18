@@ -23,4 +23,5 @@ namespace BACK_END_CLINICA.Models
         public virtual ICollection<Animale> Animali { get; set; }
         public virtual ICollection<Vendita> Vendite { get; set; }
     }
+
 }

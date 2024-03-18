@@ -1,5 +1,5 @@
-import "./assets/css/mybootstrap.min.css";
 import "./App.scss";
+import "./assets/css/mybootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import LoginForm from "./components/LoginForm";

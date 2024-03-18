@@ -1,4 +1,4 @@
-using BACK_END_CLINICA.Data;
+﻿using BACK_END_CLINICA.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

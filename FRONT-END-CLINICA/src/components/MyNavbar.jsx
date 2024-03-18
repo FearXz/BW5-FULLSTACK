@@ -1,3 +1,4 @@
+import { NavbarBrand } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,12 +9,12 @@ function MyNavbar() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">Clinica kebab</Navbar.Brand>
+        <NavbarBrand to={"/"}>Clinica kebab</NavbarBrand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavLink className={"nav-link"} to="/">Home</NavLink>
-            <NavLink className={"nav-link"} to={"/"}>Link</NavLink>
+            <NavLink className={"nav-link"} to={"api/Proprietario"}>Proprietari</NavLink>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
