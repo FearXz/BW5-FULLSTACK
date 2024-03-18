@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import stateReducer from "../reducers/stateReducer";
 import profileReducer from "../reducers/profileReducer";
+import expireReducer from "redux-persist-expire";
 
 const persistConfig = {
   key: "root",
@@ -10,8 +11,8 @@ const persistConfig = {
   whitelist: ["profile"],
   transforms: [
     expireReducer("profile", {
-      expireSeconds: 1800, //7 * 24 * 60 * 60, // 7 days
-      expiredState: { token: null },
+      expireSeconds: 7 * 24 * 60 * 60, // 7 days
+      expiredState: { loggedProfile: null },
       autoExpire: true,
     }),
   ],

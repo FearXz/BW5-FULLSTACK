@@ -2,7 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  token: null,
+  loggedProfile: null,
 };
 
 const profileReducer = createSlice({
@@ -10,12 +10,12 @@ const profileReducer = createSlice({
   initialState,
   reducers: {
     // Azione definita nello slice
-    setToken: (state, action) => {
-      state.token = action.payload;
+    setLoggedProfile: (state, action) => {
+      state.loggedProfile = action.payload;
     },
   },
 });
 
 // Esporto solo l'azione definita nello slice
-export const { setFirstState } = profileReducer.actions;
+export const { setLoggedProfile } = profileReducer.actions;
 export default profileReducer.reducer;

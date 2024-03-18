@@ -1,6 +1,6 @@
 import { store } from "../redux/store/store";
 
-async function fetchWithAuth(url, options = {}) {
+export async function fetchWithAuth(url, options = {}) {
   // Ottieni il token dallo store Redux
   const state = store.getState();
   const token = state.profile.token;
@@ -16,5 +16,3 @@ async function fetchWithAuth(url, options = {}) {
 
   return response;
 }
-
-export default fetchWithAuth;

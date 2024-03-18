@@ -30,7 +30,19 @@ namespace BACK_END_CLINICA.Controllers
             if (user != null)
             {
                 var tokenString = BuildToken(user);
-                return Ok(new { token = tokenString });
+
+                return Ok(
+                    new
+                    {
+                        token = tokenString,
+                        User = new
+                        {
+                            user.IdUser,
+                            user.Username,
+                            user.Role
+                        }
+                    }
+                );
             }
 
             return Unauthorized();
@@ -52,7 +64,7 @@ namespace BACK_END_CLINICA.Controllers
                 _configuration["Jwt:Issuer"],
                 _configuration["Jwt:Audience"],
                 claims,
-                expires: DateTime.Now.AddMinutes(30),
+                expires: DateTime.Now.AddDays(7),
                 signingCredentials: creds
             );
 
