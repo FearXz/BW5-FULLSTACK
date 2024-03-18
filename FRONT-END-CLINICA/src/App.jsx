@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import LoginForm from "./components/LoginForm";
 import MyNavbar from "./components/MyNavbar";
+import FormCreateProprietario from "./components/FormCreateProprietario";
 
 function App() {
   return (
@@ -23,6 +24,14 @@ function App() {
           element={
             <>
               <Home />
+            </>
+          }
+        />
+        <Route
+          path="/aggiungiProprietario"
+          element={
+            <>
+              <FormCreateProprietario />
             </>
           }
         />

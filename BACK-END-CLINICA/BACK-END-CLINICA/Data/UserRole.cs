@@ -5,5 +5,7 @@
         public const string ADMIN = "ADMIN";
         public const string MEDICO = "MEDICO";
         public const string FARMACISTA = "FARMACISTA";
+
+        public const string ADMIN_MEDICO = ADMIN + "," + MEDICO;
     }
 }

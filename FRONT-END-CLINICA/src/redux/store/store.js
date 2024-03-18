@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import stateReducer from "../reducers/stateReducer";
 import profileReducer from "../reducers/profileReducer";
+import proprietarioReducer from "../reducers/proprietarioReducer";
 import expireReducer from "redux-persist-expire";
 
 const persistConfig = {
@@ -21,6 +22,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   global: stateReducer,
   profile: profileReducer,
+  proprietario: proprietarioReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
