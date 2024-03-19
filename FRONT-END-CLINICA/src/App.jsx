@@ -10,8 +10,8 @@ import EditAnimale from "./components/Animale/Edit/EditAnimale";
 import Proprietario from "./components/Proprietario/Proprietario";
 import DetailProprietario from "./components/Proprietario/Details/DetailProprietario";
 import EditProprietario from "./components/Proprietario/Edit/EditProprietario";
+import ElencoVisite from "./components/Visite/Index/ElencoVisite";
 import Home from "./components/Home/Home";
-
 
 function App() {
   return (
@@ -60,7 +60,7 @@ function App() {
             </>
           }
         />
-         <Route
+        <Route
           path="/Animale/Index"
           element={
             <>
@@ -69,6 +69,7 @@ function App() {
           }
         />
         <Route path="/Animale/Edit/:AnimaleId" element={<EditAnimale />} />
+        <Route path="/Visite/Index/" element={<ElencoVisite/>} />
       </Routes>
     </BrowserRouter>
   );

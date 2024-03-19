@@ -1,6 +1,6 @@
 import { fetchWithAuth } from "../../functions/interceptor";
 import { setListaVisite, setVisitaDaEditare } from "../reducers/visiteReducer";
-import { url } from "./animale";
+import { url } from "../../functions/config";
 
 export const fetchCreateVisita = (visitaObj) => async () => {
   try {
