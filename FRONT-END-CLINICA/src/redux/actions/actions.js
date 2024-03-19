@@ -93,8 +93,7 @@ export const fetchListaAnimali = () => async (dispatch) => {
 
       console.log(dataAnimali);
 
-dispatch(setListaAnimali(dataAnimali));
-
+      dispatch(setListaAnimali(dataAnimali));
     } else {
       throw new Error("Errore nel recupero dei risultati");
     }

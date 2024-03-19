@@ -6,6 +6,7 @@ import LoginForm from "./components/Login/LoginForm";
 import MyNavbar from "./components/MyNavbar";
 import FormCreateProprietario from "./components/Proprietario/Create/FormCreateProprietario";
 import FormCreateAnimale from "./components/Animale/Create/FormCreateAnimale";
+import Proprietario from "./components/Proprietario/Proprietario";
 
 function App() {
   return (
@@ -36,7 +37,15 @@ function App() {
             </>
           }
         />
-         <Route
+        <Route
+          path="/Proprietario"
+          element={
+            <>
+              <Proprietario />
+            </>
+          }
+        />
+        <Route
           path="/Animale/Create"
           element={
             <>
