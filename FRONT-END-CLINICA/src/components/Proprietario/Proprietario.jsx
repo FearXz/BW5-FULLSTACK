@@ -19,8 +19,8 @@ function Proprietario() {
       <Row>
         {listaProprietari &&
           listaProprietari.map((obj, index) => (
-            <div key={index}>
-              <Col className="col-4">
+           
+              <Col className="col-4" key={index}>
                 <Card className="bg-light bg-opacity-75">
                   <Card.Body>
                     <Card.Title>
@@ -46,7 +46,7 @@ function Proprietario() {
                   </Card.Body>
                 </Card>
               </Col>
-            </div>
+           
           ))}
       </Row>
     </Container>
