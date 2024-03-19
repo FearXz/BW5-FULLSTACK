@@ -65,5 +65,35 @@ namespace BACK_END_CLINICA.Controllers
 
             return Ok();
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProprietario(int id)
+        {
+            var proprietario = await _db.Proprietari
+                .Where(p => p.IdProprietario == id)
+                .Select(p => new
+                {
+                    Proprietario = new
+                    {
+                        IdProprietario = p.IdProprietario,
+                        Nome = p.NomeProprietario,
+                        Cognome = p.CognomeProprietario,
+                        CodiceFiscale = p.CodiceFiscale,
+                        NumeroTelefono = p.NumeroTelefono,
+                    },
+
+                    Animali = p
+                        .Animali.Select(a => new { Nome = a.NomeAnimale, Specie = a.SpecieAnimale, DataNascita = a.DataNascita, ColoreAnimale = a.ColoreAnimale, Microchip= a.Microchip })
+                        .ToList()
+                })
+                .FirstOrDefaultAsync();
+
+            if (proprietario == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(proprietario);
+        }   
     }
 }

@@ -1,6 +1,6 @@
 import { fetchWithAuth } from "../../functions/interceptor";
 import { setLoggedProfile } from "../reducers/profileReducer";
-import { setListaProprietari } from "../reducers/proprietarioReducer";
+import { setListaProprietari, setProprietario } from "../reducers/proprietarioReducer";
 import { setListaAnimali } from "../reducers/animaleReducer";
 const url = "https://localhost:7069/";
 
@@ -41,6 +41,29 @@ export const fetchListaProprietari = () => async (dispatch) => {
       console.log(dataProfile);
 
       dispatch(setListaProprietari(dataProfile));
+    } else {
+      throw new Error("Errore nel recupero dei risultati");
+    }
+  } catch (error) {
+    // Puoi gestire gli errori qui, se necessario
+    console.error("Errore nel fetch:", error.message);
+  }
+};
+
+export const fetchProprietarioById = (id) => async (dispatch) => {
+  try {
+    const response = await fetchWithAuth(url + "proprietario/" + id, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const dataProfile = await response.json();
+
+      console.log(dataProfile);
+
+      dispatch(setProprietario(dataProfile));
     } else {
       throw new Error("Errore nel recupero dei risultati");
     }
