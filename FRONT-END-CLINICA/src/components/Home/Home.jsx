@@ -23,7 +23,7 @@
 
 import { useDispatch } from "react-redux";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { fetchListaProprietari } from "../redux/actions/actions";
+import { fetchListaProprietari } from "../../redux/actions/proprietario";
 
 function Home() {
   const dispatch = useDispatch();

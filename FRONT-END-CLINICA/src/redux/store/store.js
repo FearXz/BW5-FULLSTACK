@@ -6,6 +6,7 @@ import profileReducer from "../reducers/profileReducer";
 import proprietarioReducer from "../reducers/proprietarioReducer";
 import expireReducer from "redux-persist-expire";
 import animaleReducer from "../reducers/animaleReducer";
+import visiteReducer from "../reducers/visiteReducer";
 
 const persistConfig = {
   key: "root",
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   profile: profileReducer,
   proprietario: proprietarioReducer,
   animale: animaleReducer,
+  visita: visiteReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

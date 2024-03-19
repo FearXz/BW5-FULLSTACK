@@ -1,7 +1,6 @@
 import "./assets/css/mybootstrap.min.css";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
 import LoginForm from "./components/Login/LoginForm";
 import MyNavbar from "./components/MyNavbar";
 import FormCreateProprietario from "./components/Proprietario/Create/FormCreateProprietario";
@@ -11,6 +10,7 @@ import EditAnimale from "./components/Animale/Edit/EditAnimale";
 import Proprietario from "./components/Proprietario/Proprietario";
 import DetailProprietario from "./components/Proprietario/Details/DetailProprietario";
 import EditProprietario from "./components/Proprietario/Edit/EditProprietario";
+import Home from "./components/Home/Home";
 
 
 function App() {

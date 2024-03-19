@@ -16,7 +16,7 @@ const dispatch = useDispatch();
 
   return (
     <div>
-      <h1>Elenco Animali</h1>
+      <h1>Elenco Visite</h1>
       <ul className="text-center">
         {animali && animali.map((item) => (
           <li className="my-3 border"  key={item.animale.idAnimale}>

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAnimaleById, fetchEditAnimale, fetchListaProprietari } from "../../../redux/actions/actions";
+import { fetchAnimaleById, fetchEditAnimale } from "../../../redux/actions/animale";
 import { useParams } from "react-router-dom";
+import { fetchListaProprietari } from "../../../redux/actions/proprietario";
+
 
 export const EditAnimale = () => {
   const [NomeAnimale, setNomeAnimale] = useState("");
