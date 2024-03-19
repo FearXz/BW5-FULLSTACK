@@ -12,8 +12,8 @@ function Proprietario() {
     dispatch(fetchListaProprietari());
   }, []);
   return (
-    <Container>
-      <h3 className="text-center">Lista proprietari</h3>
+    <Container className="mt-3">
+      <h2 className="text-center">Lista proprietari</h2>
       <Row>
         {listaProprietari &&
           listaProprietari.map((obj, index) => (
