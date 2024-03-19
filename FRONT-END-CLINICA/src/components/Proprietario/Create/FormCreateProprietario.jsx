@@ -43,19 +43,19 @@ function FormCreateProprietario() {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>CodiceFiscale</Form.Label>
+          <Form.Label>Codice fiscale</Form.Label>
           <Form.Control
             type="text"
-            placeholder="CodiceFiscale"
+            placeholder="Codice fiscale"
             value={codiceFiscale}
             onChange={(e) => setCodiceFiscale(e.currentTarget.value)}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Numero di Telefon</Form.Label>
+          <Form.Label>Numero di Telefono</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Numero diTelefono"
+            placeholder="Numero di telefono"
             value={telefono}
             onChange={(e) => setTelefono(e.currentTarget.value)}
           />

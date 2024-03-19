@@ -37,6 +37,8 @@ namespace BACK_END_CLINICA.Controllers
                         EsameObiettivo = v.EsameObiettivo,
                         DescrizioneCura = v.DescrizioneCura,
                         CostoVisita = v.CostoVisita
+
+
                     }
                 })
                 .ToListAsync();
@@ -46,7 +48,7 @@ namespace BACK_END_CLINICA.Controllers
 
         //add
         // POST /visita/addvisite
-        [HttpPost("addvisite")]
+        [HttpPost("addvisita")]
         public async Task<IActionResult> AddVisita(VisitaModel visita)
         {
             if (ModelState.IsValid == false)
