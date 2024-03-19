@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCreateAnimale, fetchListaProprietari } from "../../../redux/actions/actions";
+import { fetchAnimaleById, fetchCreateAnimale, fetchListaProprietari } from "../../../redux/actions/actions";
+import { useParams } from "react-router-dom";
 
-function FormCreateAnimale() {
-
+export const EditAnimale = () => {
   const [NomeAnimale, setNomeAnimale] = useState("");
   const [IdProprietario, setIdProprietario] = useState("");
   const [DataNascita, setDataNascita] = useState("");
@@ -13,7 +13,8 @@ function FormCreateAnimale() {
   const [Microchip, setMicrochip] = useState("");
   const dispatch = useDispatch();
   const proprietari = useSelector(state => state.proprietario.listaProprietari);
-
+  const { animaleDaEditare } = useSelector((state) => state.animale);
+  const { AnimaleId } = useParams();
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -30,14 +31,34 @@ function FormCreateAnimale() {
     dispatch(fetchCreateAnimale(proprietarioObj));
   };
 
-  useEffect(() => {
-		fetchListaProprietari();
-	});
+const formatData = (data) => {
+    setDataNascita(data);
+    console.log(data);
+};
+
+
+
+useEffect(() => {
+    dispatch(fetchListaProprietari()); // necessario per lista proprietari
+    dispatch(fetchAnimaleById(AnimaleId)); // necessario per avere i dati dell'animale da editare
+}, []);
+
+useEffect(() => {
+    if (animaleDaEditare) {
+        setNomeAnimale(animaleDaEditare.animale.nome);
+        setIdProprietario(animaleDaEditare.animale.proprietario.idProprietario);
+        setDataNascita(animaleDaEditare.animale.dataNascita);
+        setSpecieAnimale(animaleDaEditare.animale.specie);
+        setColoreAnimale(animaleDaEditare.animale.coloreAnimale);
+        setMicrochip(animaleDaEditare.animale.microchip);
+    }
+}
+, [animaleDaEditare]);
 
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <h1>Aggiungi Animale</h1>
+        <h1>Modifica Animale</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Nome</Form.Label>
           <Form.Control type="text" placeholder="Inserisci il nome dell'animale" value={NomeAnimale} onChange={(e) => setNomeAnimale(e.currentTarget.value)} />
@@ -61,7 +82,8 @@ function FormCreateAnimale() {
             type="date"
             placeholder="Inserisci la data di nascita"
             value={DataNascita}
-            onChange={(e) => setDataNascita(e.currentTarget.value)}
+            onChange={(e) => formatData(e.currentTarget.value)}
+            // onChange={(e) => setDataNascita(e.currentTarget.value)}
           />
         </Form.Group>
 
@@ -100,4 +122,4 @@ function FormCreateAnimale() {
   );
 }
 
-export default FormCreateAnimale;
+export default EditAnimale;

@@ -140,3 +140,23 @@ export const fetchListaAnimali = () => async (dispatch) => {
     console.error("Errore nel fetch:", error.message);
   }
 };
+
+export const fetchAnimaleById = (id) => async (dispatch) => {
+  try {
+    const response = await fetchWithAuth(url + "animale/" + id, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const dataAnimale = await response.json();
+      dispatch(setAnimaleDaEditare(dataAnimale));
+    } else {
+      throw new Error("Errore nel recupero dei risultati");
+    }
+  } catch (error) {
+    // Handle errors here, if necessary
+    console.error("Errore nel fetch:", error.message);
+  }
+}

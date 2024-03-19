@@ -6,6 +6,8 @@ import LoginForm from "./components/Login/LoginForm";
 import MyNavbar from "./components/MyNavbar";
 import FormCreateProprietario from "./components/Proprietario/Create/FormCreateProprietario";
 import FormCreateAnimale from "./components/Animale/Create/FormCreateAnimale";
+import { ElencoAnimali } from "./components/Animale/Index/ElencoAnimali";
+import EditAnimale from "./components/Animale/Edit/EditAnimale";
 import Proprietario from "./components/Proprietario/Proprietario";
 import DetailProprietario from "./components/Proprietario/Details/DetailProprietario";
 import EditProprietario from "./components/Proprietario/Edit/EditProprietario";
@@ -58,6 +60,15 @@ function App() {
             </>
           }
         />
+         <Route
+          path="/Animale/Index"
+          element={
+            <>
+              <ElencoAnimali />
+            </>
+          }
+        />
+        <Route path="/Animale/Edit/:AnimaleId" element={<EditAnimale />} />
       </Routes>
     </BrowserRouter>
   );
