@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { fetchUpdateProprietario } from "../../../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { fetchProprietarioById } from "../../../redux/actions/actions";
 
 function EditProprietario() {
+  const p = useSelector((state) => state.proprietario.singoloProprietario);
+
   const [nome, setNome] = useState("");
   const [cognome, setCognome] = useState("");
   const [codiceFiscale, setCodiceFiscale] = useState("");
@@ -12,13 +15,22 @@ function EditProprietario() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchGetProprietarioById(id));
+    dispatch(fetchProprietarioById(id));
   }, []);
+
+  useEffect(() => {
+    if (p) {
+      setNome(p.proprietario.nome);
+      setCognome(p.proprietario.cognome);
+      setCodiceFiscale(p.proprietario.codiceFiscale);
+      setTelefono(p.proprietario.numeroTelefono);
+    }
+  }, [p]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const updatedProprietarioObj = {
+    /*  const updatedProprietarioObj = {
       Id: proprietario?.Id,
       NomeProprietario: nome,
       CognomeProprietario: cognome,
@@ -26,7 +38,7 @@ function EditProprietario() {
       NumeroTelefono: telefono,
     };
 
-    dispatch(fetchUpdateProprietario(updatedProprietarioObj));
+    dispatch(fetchUpdateProprietario(updatedProprietarioObj)); */
   };
 
   return (
