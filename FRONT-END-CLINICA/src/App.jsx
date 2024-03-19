@@ -8,6 +8,10 @@ import FormCreateProprietario from "./components/Proprietario/Create/FormCreateP
 import FormCreateAnimale from "./components/Animale/Create/FormCreateAnimale";
 import { ElencoAnimali } from "./components/Animale/Index/ElencoAnimali";
 import EditAnimale from "./components/Animale/Edit/EditAnimale";
+import Proprietario from "./components/Proprietario/Proprietario";
+import DetailProprietario from "./components/Proprietario/Details/DetailProprietario";
+import EditProprietario from "./components/Proprietario/Edit/EditProprietario";
+
 
 function App() {
   return (
@@ -38,7 +42,17 @@ function App() {
             </>
           }
         />
-         <Route
+        <Route
+          path="/Proprietario"
+          element={
+            <>
+              <Proprietario />
+            </>
+          }
+        />
+        <Route path="/Proprietario/Details/:id" element={<DetailProprietario />} />
+        <Route path="/Proprietario/Edit/:id" element={<EditProprietario />} />
+        <Route
           path="/Animale/Create"
           element={
             <>

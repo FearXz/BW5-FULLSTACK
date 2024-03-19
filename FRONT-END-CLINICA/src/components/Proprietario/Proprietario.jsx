@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, NavLink, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchListaProprietari } from "../../redux/actions/actions";
+import { Link } from "react-router-dom";
 
 function Proprietario() {
   const dispatch = useDispatch();
@@ -11,8 +12,8 @@ function Proprietario() {
     dispatch(fetchListaProprietari());
   }, []);
   return (
-    <Container>
-      <h3 className="text-center">Lista proprietari</h3>
+    <Container className="mt-3">
+      <h2 className="text-center">Lista proprietari</h2>
       <Row>
         {listaProprietari &&
           listaProprietari.map((obj, index) => (
@@ -33,7 +34,12 @@ function Proprietario() {
                       <Card.Text className="ms-2">{obj.proprietario.numeroTelefono}</Card.Text>
                     </div>
 
-                    <Button variant="light">Dettagli</Button>
+                    <Link className="btn btn-dark" to={"/Proprietario/Details/" + obj.proprietario.idProprietario}>
+                      Dettagli
+                    </Link>
+                    <Link className="btn btn-dark" to={"/Proprietario/Edit/" + obj.proprietario.idProprietario}>
+                      Modifica
+                    </Link>
                   </Card.Body>
                 </Card>
               </Col>

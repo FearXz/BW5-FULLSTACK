@@ -1,7 +1,7 @@
 import { fetchWithAuth } from "../../functions/interceptor";
 import { setLoggedProfile } from "../reducers/profileReducer";
-import { setListaProprietari } from "../reducers/proprietarioReducer";
-import { setAnimaleDaEditare, setListaAnimali } from "../reducers/animaleReducer";
+import { setListaProprietari, setProprietario } from "../reducers/proprietarioReducer";
+import { setListaAnimali } from "../reducers/animaleReducer";
 const url = "https://localhost:7069/";
 
 export const fetchLogin = (path, loginObj) => async (dispatch) => {
@@ -50,10 +50,48 @@ export const fetchListaProprietari = () => async (dispatch) => {
   }
 };
 
+export const fetchProprietarioById = (id) => async (dispatch) => {
+  try {
+    const response = await fetchWithAuth(url + "proprietario/" + id, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const dataProfile = await response.json();
+
+      console.log(dataProfile);
+
+      dispatch(setProprietario(dataProfile));
+    } else {
+      throw new Error("Errore nel recupero dei risultati");
+    }
+  } catch (error) {
+    // Puoi gestire gli errori qui, se necessario
+    console.error("Errore nel fetch:", error.message);
+  }
+};
+
 export const fetchCreateProprietario = (proprietarioObj) => async () => {
   try {
     const response = await fetchWithAuth(url + "proprietario/addproprietario", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(proprietarioObj),
+    });
+  } catch (error) {
+    // Puoi gestire gli errori qui, se necessario
+    console.error("Errore nel fetch:", error.message);
+  }
+};
+
+export const fetchUpdateProprietario = (proprietarioObj) => async () => {
+  try {
+    const response = await fetchWithAuth(url + "proprietario/updateProprietario", {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -93,8 +131,7 @@ export const fetchListaAnimali = () => async (dispatch) => {
 
       console.log(dataAnimali);
 
-dispatch(setListaAnimali(dataAnimali));
-
+      dispatch(setListaAnimali(dataAnimali));
     } else {
       throw new Error("Errore nel recupero dei risultati");
     }
