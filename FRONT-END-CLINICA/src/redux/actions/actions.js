@@ -91,7 +91,7 @@ export const fetchCreateProprietario = (proprietarioObj) => async () => {
 export const fetchUpdateProprietario = (proprietarioObj) => async () => {
   try {
     const response = await fetchWithAuth(url + "proprietario/update/", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -159,4 +159,4 @@ export const fetchAnimaleById = (id) => async (dispatch) => {
     // Handle errors here, if necessary
     console.error("Errore nel fetch:", error.message);
   }
-}
+};
