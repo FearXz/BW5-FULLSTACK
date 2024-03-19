@@ -14,7 +14,7 @@ import ElencoVisite from "./components/Visite/Index/ElencoVisite";
 import Home from "./components/Home/Home";
 import FormCreateVisite from "./components/Visite/Create/FormCreateVisite";
 import EditVisite from "./components/Visite/Edit/EditVisite";
-
+import { ElencoRicoveri } from "./components/Ricoveri/Index/ElencoRicoveri";
 function App() {
   return (
     <BrowserRouter>
@@ -74,6 +74,9 @@ function App() {
         <Route path="/Visite/Index/" element={<ElencoVisite />} />
         <Route path="/Visite/Create/" element={<FormCreateVisite />} />
         <Route path="/Visita/Edit/:id" element={<EditVisite />} />
+        <Route path="/Ricoveri/Index/" element={<ElencoRicoveri />} />
+        <Route path="/Ricoveri/Create/" element={<FormCreateVisite />} />
+        <Route path="/Ricoveri/Edit/:id" element={<EditVisite />} />
       </Routes>
     </BrowserRouter>
   );
