@@ -90,8 +90,8 @@ export const fetchCreateProprietario = (proprietarioObj) => async () => {
 
 export const fetchUpdateProprietario = (proprietarioObj) => async () => {
   try {
-    const response = await fetchWithAuth(url + "proprietario/updateProprietario", {
-      method: "PUT",
+    const response = await fetchWithAuth(url + "proprietario/update/", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },

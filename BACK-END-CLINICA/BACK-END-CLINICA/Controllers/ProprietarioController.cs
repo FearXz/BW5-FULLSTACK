@@ -94,6 +94,32 @@ namespace BACK_END_CLINICA.Controllers
             }
 
             return Ok(proprietario);
-        }   
+        }
+
+
+        [HttpPost("update")]
+        public async Task<IActionResult> UpdateProprietario(ProprietarioEditModel proprietario)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return BadRequest();
+            }
+
+            var prop = await _db.Proprietari.FindAsync(proprietario.IdProprietario);
+
+            if (prop == null)
+            {
+                return NotFound();
+            }
+
+            prop.NomeProprietario = proprietario.NomeProprietario;
+            prop.CognomeProprietario = proprietario.CognomeProprietario;
+            prop.CodiceFiscale = proprietario.CodiceFiscale;
+            prop.NumeroTelefono = proprietario.NumeroTelefono;
+
+            await _db.SaveChangesAsync();
+
+            return Ok();
+        }
     }
 }

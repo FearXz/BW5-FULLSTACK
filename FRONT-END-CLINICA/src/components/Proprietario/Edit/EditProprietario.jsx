@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchProprietarioById } from "../../../redux/actions/actions";
+import { fetchProprietarioById, fetchUpdateProprietario } from "../../../redux/actions/actions";
 
 function EditProprietario() {
   const p = useSelector((state) => state.proprietario.singoloProprietario);
@@ -30,15 +30,16 @@ function EditProprietario() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    /*  const updatedProprietarioObj = {
-      Id: proprietario?.Id,
+     const updatedProprietarioObj = {
+      IdProprietario: p.proprietario.idProprietario,
       NomeProprietario: nome,
       CognomeProprietario: cognome,
       CodiceFiscale: codiceFiscale,
       NumeroTelefono: telefono,
     };
 
-    dispatch(fetchUpdateProprietario(updatedProprietarioObj)); */
+
+    dispatch(fetchUpdateProprietario(updatedProprietarioObj)); 
   };
 
   return (
@@ -69,10 +70,10 @@ function EditProprietario() {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Numero di Telefon</Form.Label>
+          <Form.Label>Numero di Telefono</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Numero diTelefono"
+            placeholder="Numero di Telefono"
             value={telefono}
             onChange={(e) => setTelefono(e.currentTarget.value)}
           />

@@ -3,6 +3,8 @@ import { Button, Card, Col, Container, NavLink, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchListaProprietari } from "../../redux/actions/actions";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 function Proprietario() {
   const dispatch = useDispatch();
@@ -33,13 +35,14 @@ function Proprietario() {
                       <Card.Subtitle>Numero telefono: </Card.Subtitle>
                       <Card.Text className="ms-2">{obj.proprietario.numeroTelefono}</Card.Text>
                     </div>
-
-                    <Link className="btn btn-dark" to={"/Proprietario/Details/" + obj.proprietario.idProprietario}>
-                      Dettagli
-                    </Link>
-                    <Link className="btn btn-dark" to={"/Proprietario/Edit/" + obj.proprietario.idProprietario}>
-                      Modifica
-                    </Link>
+                    <div className="d-flex justify-content-end">
+                      <Link className="btn btn-dark me-1" to={"/Proprietario/Details/" + obj.proprietario.idProprietario}>
+                        <FontAwesomeIcon icon={faInfoCircle} />
+                      </Link>
+                      <Link className="btn btn-dark" to={"/Proprietario/Edit/" + obj.proprietario.idProprietario}>
+                        <FontAwesomeIcon icon={faEdit} />
+                      </Link>
+                    </div>
                   </Card.Body>
                 </Card>
               </Col>
