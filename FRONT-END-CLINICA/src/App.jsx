@@ -2,9 +2,9 @@ import "./assets/css/mybootstrap.min.css";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import LoginForm from "./components/LoginForm";
+import LoginForm from "./components/Login/LoginForm";
 import MyNavbar from "./components/MyNavbar";
-import FormCreateProprietario from "./components/FormCreateProprietario";
+import FormCreateProprietario from "./components/Proprietario/Create/FormCreateProprietario";
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
           }
         />
         <Route
-          path="/aggiungiProprietario"
+          path="/Proprietario/Create"
           element={
             <>
               <FormCreateProprietario />

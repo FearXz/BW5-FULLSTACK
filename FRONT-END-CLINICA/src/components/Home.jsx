@@ -1,5 +1,4 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { fetchWithAuth } from "../functions/interceptor";
 import { useDispatch } from "react-redux";
 import { fetchListaProprietari } from "../redux/actions/actions";
 
