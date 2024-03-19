@@ -2,13 +2,12 @@ import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { fetchUpdateProprietario } from "../../../redux/actions/actions";
-import PropTypes from "prop-types";
 
-function EditProprietario({ proprietario }) {
-  const [nome, setNome] = useState(proprietario?.NomeProprietario || "");
-  const [cognome, setCognome] = useState(proprietario?.CognomeProprietario || "");
-  const [codiceFiscale, setCodiceFiscale] = useState(proprietario?.CodiceFiscale || "");
-  const [telefono, setTelefono] = useState(proprietario?.NumeroTelefono || "");
+function EditProprietario() {
+  const [nome, setNome] = useState("");
+  const [cognome, setCognome] = useState("");
+  const [codiceFiscale, setCodiceFiscale] = useState("");
+  const [telefono, setTelefono] = useState("");
 
   const dispatch = useDispatch();
 
@@ -69,15 +68,5 @@ function EditProprietario({ proprietario }) {
     </Container>
   );
 }
-
-EditProprietario.propTypes = {
-  proprietario: PropTypes.shape({
-    NomeProprietario: PropTypes.string,
-    CognomeProprietario: PropTypes.string,
-    CodiceFiscale: PropTypes.string,
-    NumeroTelefono: PropTypes.string,
-    Id: PropTypes.number,
-  }),
-};
 
 export default EditProprietario;
