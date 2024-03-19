@@ -19,14 +19,7 @@ function MyNavbar() {
             <NavDropdown title="Proprietari" id="basic-nav-dropdown">
               <NavDropdown.Item to={"/Proprietario"} as={NavLink} className={""}>Lista proprietari</NavDropdown.Item>
               <NavDropdown.Item to={"/Proprietario/Create"} as={NavLink} className={""}>Aggiungi proprietario</NavDropdown.Item>
-              {/* <NavDropdown.Item href="#action/3.2">
-                Elenco Animali
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item> */}
+              
             </NavDropdown>
             <NavDropdown title="Animali" id="basic-nav-dropdown">
               <NavDropdown.Item to={"/Animale/Create"} as={NavLink} className={""}>Aggiungi animale</NavDropdown.Item>
@@ -38,6 +31,11 @@ function MyNavbar() {
               <NavDropdown.Item href="#action/3.4">
                 Separated link
               </NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Visite" id="basic-nav-dropdown">
+              <NavDropdown.Item to={"/Visite/Index"} as={NavLink} className={""}>Lista visite</NavDropdown.Item>
+              <NavDropdown.Item to={"/Visite/Create"} as={NavLink} className={""}>Aggiungi visita</NavDropdown.Item>
+              
             </NavDropdown>
           </Nav>
             <NavLink className={"nav-link"} to={"/login"}>Login</NavLink>
