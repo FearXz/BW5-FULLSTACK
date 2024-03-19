@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { fetchEditVisita, fetchVisitaById } from "../../../redux/actions/visite";
 
 function EditVisite() {
-  const v = useSelector((state) => state.visita.singolaVisita);
+  const v = useSelector((state) => state.visita.visitaDaEditare);
 
   const [idAnimale, setIdAnimale] = useState("");
   const [dataVisita, setDataVisita] = useState("");
@@ -23,7 +23,12 @@ function EditVisite() {
   useEffect(() => {
     if (v) {
       setIdAnimale(v.visita.idAnimale);
-      setDataVisita(v.visita.dataVisita);
+      const date = new Date(v.visita.dataVisita);
+      const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(
+        date.getDate()
+      ).padStart(2, "0")}`;
+      setDataVisita(formattedDate);
+      //  setDataVisita(v.visita.dataVisita);
       setEsameObiettivo(v.visita.esameObiettivo);
       setDescrizioneCura(v.visita.descrizioneCura);
       setCostoVisita(v.visita.costoVisita);
@@ -61,7 +66,7 @@ function EditVisite() {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Data Visita</Form.Label>
           <Form.Control
-            type="text"
+            type="date"
             placeholder="Data Visita"
             value={dataVisita}
             onChange={(e) => setDataVisita(e.currentTarget.value)}

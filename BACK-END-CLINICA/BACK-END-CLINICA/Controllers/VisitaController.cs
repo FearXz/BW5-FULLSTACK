@@ -26,7 +26,7 @@ namespace BACK_END_CLINICA.Controllers
         [HttpGet("list")]
         public async Task<IActionResult> GetVisite()
         {
-           var visite = await _db
+            var visite = await _db
                 .Visite.Select(v => new
                 {
                     Visita = new
@@ -37,8 +37,6 @@ namespace BACK_END_CLINICA.Controllers
                         EsameObiettivo = v.EsameObiettivo,
                         DescrizioneCura = v.DescrizioneCura,
                         CostoVisita = v.CostoVisita
-
-
                     }
                 })
                 .ToListAsync();
@@ -63,7 +61,6 @@ namespace BACK_END_CLINICA.Controllers
                 EsameObiettivo = visita.EsameObiettivo,
                 DescrizioneCura = visita.DescrizioneCura,
                 CostoVisita = visita.CostoVisita
-
             };
 
             await _db.Visite.AddAsync(newVisita);
@@ -78,24 +75,25 @@ namespace BACK_END_CLINICA.Controllers
         public async Task<IActionResult> GetVisita(int id)
         {
             var visita = await _db
-               .Visite.Select(v => new
-               {
-                   Visita = new
-                   {
-                       IdVisita = v.IdVisita,
-                       IdAnimale = v.IdAnimale,
-                       DataVisita = v.DataVisita,
-                       EsameObiettivo = v.EsameObiettivo,
-                       DescrizioneCura = v.DescrizioneCura,
-                       CostoVisita = v.CostoVisita
-                   }
-               })
-               .FirstOrDefaultAsync();
+                .Visite.Where(v => v.IdVisita == id)
+                .Select(v => new
+                {
+                    Visita = new
+                    {
+                        IdVisita = v.IdVisita,
+                        IdAnimale = v.IdAnimale,
+                        DataVisita = v.DataVisita,
+                        EsameObiettivo = v.EsameObiettivo,
+                        DescrizioneCura = v.DescrizioneCura,
+                        CostoVisita = v.CostoVisita
+                    }
+                })
+                .FirstOrDefaultAsync();
 
             return Ok(visita);
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<IActionResult> UpdateVisita(VisitaModel visita)
         {
             if (ModelState.IsValid == false)
@@ -115,7 +113,6 @@ namespace BACK_END_CLINICA.Controllers
             vis.EsameObiettivo = visita.EsameObiettivo;
             vis.DescrizioneCura = visita.DescrizioneCura;
             vis.CostoVisita = visita.CostoVisita;
-
 
             await _db.SaveChangesAsync();
 
