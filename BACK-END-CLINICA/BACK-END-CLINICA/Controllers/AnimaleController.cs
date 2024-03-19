@@ -10,38 +10,36 @@ namespace BACK_END_CLINICA.Controllers
     [Route("[controller]")]
     [ApiController]
     [Authorize(Roles = UserRole.ADMIN_MEDICO)]
-    public class ProprietarioController : ControllerBase
+    public class AnimaleController : ControllerBase
     {
         private readonly ApplicationDbContext _db;
 
-        public ProprietarioController(ApplicationDbContext db)
+        public AnimaleController(ApplicationDbContext db)
         {
             _db = db;
         }
 
-        // GET /proprietario/list
+        // GET /animale/list
         [HttpGet("list")]
-        public async Task<IActionResult> GetProprietari()
+        public async Task<IActionResult> GetAnimali()
         {
-            var proprietari = await _db
-                .Proprietari.Select(p => new
+            var animali = await _db
+                .Animali.Select(p => new
                 {
-                    Proprietario = new
+                    Animale = new
                     {
-                        IdProprietario = p.IdProprietario,
-                        Nome = p.NomeProprietario,
-                        Cognome = p.CognomeProprietario,
-                        CodiceFiscale = p.CodiceFiscale,
-                        NumeroTelefono = p.NumeroTelefono,
-                    },
-
-                    Animali = p
-                        .Animali.Select(a => new { Nome = a.NomeAnimale, Specie = a.SpecieAnimale })
-                        .ToList()
+                        Nome = p.NomeAnimale,
+                        Specie = p.SpecieAnimale,
+                        Proprietario = new
+                        {
+                            Nome = p.Proprietario.NomeProprietario,
+                            Cognome = p.Proprietario.CognomeProprietario
+                        }
+                    }
                 })
                 .ToListAsync();
 
-            return Ok(proprietari);
+            return Ok(animali);
         }
 
         [HttpPost("addproprietario")]

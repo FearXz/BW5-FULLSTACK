@@ -5,6 +5,7 @@ import stateReducer from "../reducers/stateReducer";
 import profileReducer from "../reducers/profileReducer";
 import proprietarioReducer from "../reducers/proprietarioReducer";
 import expireReducer from "redux-persist-expire";
+import animaleReducer from "../reducers/animaleReducer";
 
 const persistConfig = {
   key: "root",
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   global: stateReducer,
   profile: profileReducer,
   proprietario: proprietarioReducer,
+  animale: animaleReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

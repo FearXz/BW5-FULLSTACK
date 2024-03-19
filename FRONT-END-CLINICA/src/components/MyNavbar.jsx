@@ -16,16 +16,16 @@ function MyNavbar() {
           <Nav className="me-auto">
             <NavLink className={"nav-link"} to="/">Home</NavLink>
             <NavLink className={"nav-link"} to={"/Proprietario/Create"}>Proprietari</NavLink>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
+            <NavDropdown title="Animali" id="basic-nav-dropdown">
+              <NavDropdown.Item to={"/Animale/Create"} as={NavLink} className={""}>Aggiungi animale</NavDropdown.Item>
+              {/* <NavDropdown.Item href="#action/3.2">
+                Elenco Animali
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">
                 Separated link
-              </NavDropdown.Item>
+              </NavDropdown.Item> */}
             </NavDropdown>
           </Nav>
             <NavLink className={"nav-link"} to={"/login"}>Login</NavLink>

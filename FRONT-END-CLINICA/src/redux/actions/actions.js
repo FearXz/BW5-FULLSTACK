@@ -1,7 +1,7 @@
 import { fetchWithAuth } from "../../functions/interceptor";
 import { setLoggedProfile } from "../reducers/profileReducer";
 import { setListaProprietari } from "../reducers/proprietarioReducer";
-
+import { setListaAnimali } from "../reducers/animaleReducer";
 const url = "https://localhost:7069/";
 
 export const fetchLogin = (path, loginObj) => async (dispatch) => {
@@ -50,7 +50,7 @@ export const fetchListaProprietari = () => async (dispatch) => {
   }
 };
 
-export const fetchCreateProprietario = (proprietarioObj) => async (dispatch) => {
+export const fetchCreateProprietario = (proprietarioObj) => async () => {
   try {
     const response = await fetchWithAuth(url + "proprietario/addproprietario", {
       method: "POST",
@@ -61,6 +61,45 @@ export const fetchCreateProprietario = (proprietarioObj) => async (dispatch) => 
     });
   } catch (error) {
     // Puoi gestire gli errori qui, se necessario
+    console.error("Errore nel fetch:", error.message);
+  }
+};
+
+export const fetchCreateAnimale = (animaleObj) => async () => {
+  try {
+    const response = await fetchWithAuth(url + "animale/addanimale", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(animaleObj),
+    });
+  } catch (error) {
+    // Puoi gestire gli errori qui, se necessario
+    console.error("Errore nel fetch:", error.message);
+  }
+};
+
+export const fetchListaAnimali = () => async (dispatch) => {
+  try {
+    const response = await fetchWithAuth(url + "animale/list", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const dataAnimali = await response.json();
+
+      console.log(dataAnimali);
+
+dispatch(setListaAnimali(dataAnimali));
+
+    } else {
+      throw new Error("Errore nel recupero dei risultati");
+    }
+  } catch (error) {
+    // Handle errors here, if necessary
     console.error("Errore nel fetch:", error.message);
   }
 };

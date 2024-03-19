@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import LoginForm from "./components/Login/LoginForm";
 import MyNavbar from "./components/MyNavbar";
 import FormCreateProprietario from "./components/Proprietario/Create/FormCreateProprietario";
+import FormCreateAnimale from "./components/Animale/Create/FormCreateAnimale";
 
 function App() {
   return (
@@ -32,6 +33,14 @@ function App() {
           element={
             <>
               <FormCreateProprietario />
+            </>
+          }
+        />
+         <Route
+          path="/Animale/Create"
+          element={
+            <>
+              <FormCreateAnimale />
             </>
           }
         />
