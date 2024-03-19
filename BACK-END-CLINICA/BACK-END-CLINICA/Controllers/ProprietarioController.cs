@@ -43,7 +43,7 @@ namespace BACK_END_CLINICA.Controllers
 
             return Ok(proprietari);
         }
-
+        
         [HttpPost("addproprietario")]
         public async Task<IActionResult> AddProprietario(ProprietarioModel proprietario)
         {
@@ -96,7 +96,7 @@ namespace BACK_END_CLINICA.Controllers
             return Ok(proprietario);
         }
 
-
+        
         [HttpPost("update")]
         public async Task<IActionResult> UpdateProprietario(ProprietarioEditModel proprietario)
         {
