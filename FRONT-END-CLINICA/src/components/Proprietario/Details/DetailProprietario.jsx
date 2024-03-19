@@ -15,53 +15,58 @@ function DetailProprietario() {
 
   return (
     <div>
-      <Container>
+      <Container className="mt-4">
         <Row>
           <Col>
-            <h3 className="text-center">Dettagli proprietario</h3>
+            <h2 className="">Dettagli proprietario</h2>
             {p && (
-              <Card className="bg-light bg-opacity-75">
-                <Card.Body>
-                  <Card.Title>
-                    {p.proprietario.nome} {p.proprietario.cognome}
-                  </Card.Title>
-                  <div className="d-flex align-items-baseline">
-                    <Card.Subtitle>Codice fiscale: </Card.Subtitle>
-                    <Card.Text className="ms-2">{p.proprietario.codiceFiscale}</Card.Text>
-                  </div>
+              <>
+                <h4>
+                  {p.proprietario.nome} {p.proprietario.cognome}
+                </h4>
+                <div className="d-flex align-items-baseline">
+                  <strong>Codice fiscale: </strong>
+                  <span className="ms-2">{p.proprietario.codiceFiscale}</span>
+                </div>
+                <div className="d-flex align-items-baseline">
+                  <strong>Numero telefono: </strong>
+                  <span className="ms-2">{p.proprietario.numeroTelefono}</span>
+                </div>
+                <h5 className="mt-3">Animali</h5>
 
-                  <div className="d-flex align-items-baseline">
-                    <Card.Subtitle>Numero telefono: </Card.Subtitle>
-                    <Card.Text className="ms-2">{p.proprietario.numeroTelefono}</Card.Text>
-                  </div>
-                  <div>
-                    <Card.Subtitle>Animali: </Card.Subtitle>
-
-                    {p.animali.map((obj, index) => (
-                      <div key={index}>
-                        <Card.Body>
-                          <div className="d-flex align-items-baseline">
-                            <Card.Subtitle>Nome: </Card.Subtitle>
-                            <Card.Text className="ms-2">{obj.nome}</Card.Text>
-                          </div>
-                          <div className="d-flex align-items-baseline">
-                            <Card.Subtitle>Specie: </Card.Subtitle>
-                            <Card.Text className="ms-2">{obj.specie}</Card.Text>
-                          </div>
-                          <div className="d-flex align-items-baseline">
-                            <Card.Subtitle>Data di nascita: </Card.Subtitle>
-                            <Card.Text className="ms-2">{new Date(obj.dataNascita).toLocaleDateString()}</Card.Text>
-                          </div>
-                          <div className="d-flex align-items-baseline">
-                            <Card.Subtitle>Colore: </Card.Subtitle>
-                            <Card.Text className="ms-2">{obj.coloreAnimale}</Card.Text>
-                          </div>
-                        </Card.Body>
-                      </div>
-                    ))}
-                  </div>
-                </Card.Body>
-              </Card>
+                <Row>
+                  {p.animali.map((obj, index) => (
+                    <Container>
+                      <Col className="col-2">
+                        <Card className="bg-light bg-opacity-75" key={index}>
+                          <Card.Body>
+                            <div className="d-flex align-items-baseline">
+                              <Card.Subtitle>Nome: </Card.Subtitle>
+                              <Card.Text className="ms-2">{obj.nome}</Card.Text>
+                            </div>
+                            <div className="d-flex align-items-baseline">
+                              <Card.Subtitle>Specie: </Card.Subtitle>
+                              <Card.Text className="ms-2">{obj.specie}</Card.Text>
+                            </div>
+                            <div className="d-flex align-items-baseline">
+                              <Card.Subtitle>Data di nascita: </Card.Subtitle>
+                              <Card.Text className="ms-2">{new Date(obj.dataNascita).toLocaleDateString()}</Card.Text>
+                            </div>
+                            <div className="d-flex align-items-baseline">
+                              <Card.Subtitle>Colore: </Card.Subtitle>
+                              <Card.Text className="ms-2">{obj.coloreAnimale}</Card.Text>
+                            </div>
+                            <div className="d-flex align-items-baseline">
+                              <Card.Subtitle>Microchip: </Card.Subtitle>
+                              <Card.Text className="ms-2">{obj.microchip ? obj.microchip : "No"}</Card.Text>
+                            </div>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                    </Container>
+                  ))}
+                </Row>
+              </>
             )}
           </Col>
         </Row>
