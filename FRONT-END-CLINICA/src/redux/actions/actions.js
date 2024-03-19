@@ -65,6 +65,21 @@ export const fetchCreateProprietario = (proprietarioObj) => async () => {
   }
 };
 
+export const fetchUpdateProprietario = (proprietarioObj) => async () => {
+  try {
+    const response = await fetchWithAuth(url + "proprietario/updateProprietario", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(proprietarioObj),
+    });
+  } catch (error) {
+    // Puoi gestire gli errori qui, se necessario
+    console.error("Errore nel fetch:", error.message);
+  }
+};
+
 export const fetchCreateAnimale = (animaleObj) => async () => {
   try {
     const response = await fetchWithAuth(url + "animale/addAnimale", {
