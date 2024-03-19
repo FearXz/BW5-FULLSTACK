@@ -34,10 +34,10 @@ function Proprietario() {
                       <Card.Text className="ms-2">{obj.proprietario.numeroTelefono}</Card.Text>
                     </div>
 
-                    <Link className="btn btn-brown-600" to={"/Proprietario/Details/" + obj.proprietario.idProprietario}>
+                    <Link className="btn btn-dark" to={"/Proprietario/Details/" + obj.proprietario.idProprietario}>
                       Dettagli
                     </Link>
-                    <Link className="btn btn-brown-600" to={"/Proprietario/Edit/" + obj.proprietario.idProprietario}>
+                    <Link className="btn btn-dark" to={"/Proprietario/Edit/" + obj.proprietario.idProprietario}>
                       Modifica
                     </Link>
                   </Card.Body>

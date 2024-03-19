@@ -10,6 +10,7 @@ import Proprietario from "./components/Proprietario/Proprietario";
 import DetailProprietario from "./components/Proprietario/Details/DetailProprietario";
 import EditProprietario from "./components/Proprietario/Edit/EditProprietario";
 
+
 function App() {
   return (
     <BrowserRouter>
