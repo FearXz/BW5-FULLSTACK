@@ -17,7 +17,7 @@ function FormCreateAnimale() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const proprietarioObj = {
+    const animaleObj = {
       NomeAnimale: NomeAnimale,
       IdProprietario: IdProprietario,
       DataNascita: DataNascita,
@@ -27,7 +27,7 @@ function FormCreateAnimale() {
 
     };
 
-    dispatch(fetchCreateAnimale(proprietarioObj));
+    dispatch(fetchCreateAnimale(animaleObj));
   };
 
   useEffect(() => {

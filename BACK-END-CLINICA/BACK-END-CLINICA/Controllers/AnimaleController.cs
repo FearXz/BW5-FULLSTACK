@@ -43,17 +43,16 @@ namespace BACK_END_CLINICA.Controllers
             return Ok(animali);
         }
 
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAnimale(int id)
         {
             var animale = await _db
-                .Animali
-                .Where(a => a.IdAnimale == id)
+                .Animali.Where(a => a.IdAnimale == id)
                 .Select(p => new
                 {
                     Animale = new
                     {
+                        IdAnimale = p.IdAnimale,
                         Nome = p.NomeAnimale,
                         Specie = p.SpecieAnimale,
                         DataNascita = p.DataNascita,
@@ -99,16 +98,11 @@ namespace BACK_END_CLINICA.Controllers
             return Ok();
         }
 
-
-
-
-
         [HttpGet("list/{idProprietario}")]
         public async Task<IActionResult> GetAnimaliByProprietario(int idProprietario)
         {
             var animali = await _db
-                .Animali
-                .Where(a => a.IdProprietario == idProprietario)
+                .Animali.Where(a => a.IdProprietario == idProprietario)
                 .Select(p => new
                 {
                     Animale = new
@@ -127,13 +121,6 @@ namespace BACK_END_CLINICA.Controllers
             return Ok(animali);
         }
 
-
-
-
-
-
-
-
         [HttpPost("addAnimale")]
         public async Task<IActionResult> AddAnimale(AnimaleModelPost animale)
         {
@@ -151,10 +138,43 @@ namespace BACK_END_CLINICA.Controllers
                 SpecieAnimale = animale.SpecieAnimale,
                 ColoreAnimale = animale.ColoreAnimale,
                 Microchip = animale.Microchip
-
             };
 
             await _db.Animali.AddAsync(newAnimal);
+            await _db.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        // PUT /animale/update
+        [HttpPut("editanimal")]
+        public async Task<IActionResult> UpdateAnimale(AnimaleModelEdit animale)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return BadRequest();
+            }
+
+            var myAnimal = await _db.Animali.FindAsync(animale.IdAnimale);
+
+            if (myAnimal == null)
+            {
+                return NotFound();
+            }
+
+            //DateTime dataNascita = DateTime.ParseExact(
+            //    animale.DataNascita,
+            //    "yyyy-MM-dd",
+            //    CultureInfo.InvariantCulture
+            //);
+
+            myAnimal.NomeAnimale = animale.NomeAnimale;
+            myAnimal.IdProprietario = animale.IdProprietario;
+            myAnimal.DataNascita = animale.DataNascita;
+            myAnimal.SpecieAnimale = animale.SpecieAnimale;
+            myAnimal.ColoreAnimale = animale.ColoreAnimale;
+            myAnimal.Microchip = animale.Microchip;
+
             await _db.SaveChangesAsync();
 
             return Ok();

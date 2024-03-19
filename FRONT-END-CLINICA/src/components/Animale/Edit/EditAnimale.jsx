@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAnimaleById, fetchCreateAnimale, fetchListaProprietari } from "../../../redux/actions/actions";
+import { fetchAnimaleById, fetchEditAnimale, fetchListaProprietari } from "../../../redux/actions/actions";
 import { useParams } from "react-router-dom";
 
 export const EditAnimale = () => {
@@ -18,17 +18,17 @@ export const EditAnimale = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const proprietarioObj = {
+    const animaleObj = {
       NomeAnimale: NomeAnimale,
       IdProprietario: IdProprietario,
       DataNascita: DataNascita,
       SpecieAnimale: SpecieAnimale,
       ColoreAnimale: ColoreAnimale,
       Microchip: Microchip,
-
+      IdAnimale: AnimaleId
     };
 
-    dispatch(fetchCreateAnimale(proprietarioObj));
+    dispatch(fetchEditAnimale(animaleObj));
   };
 
 const formatData = (data) => {
@@ -47,7 +47,9 @@ useEffect(() => {
     if (animaleDaEditare) {
         setNomeAnimale(animaleDaEditare.animale.nome);
         setIdProprietario(animaleDaEditare.animale.proprietario.idProprietario);
-        setDataNascita(animaleDaEditare.animale.dataNascita);
+        const date = new Date(animaleDaEditare.animale.dataNascita);
+        const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+        setDataNascita(formattedDate);
         setSpecieAnimale(animaleDaEditare.animale.specie);
         setColoreAnimale(animaleDaEditare.animale.coloreAnimale);
         setMicrochip(animaleDaEditare.animale.microchip);
