@@ -69,8 +69,8 @@ namespace BACK_END_CLINICA.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProprietario(int id)
         {
-            var proprietario = await _db.Proprietari
-                .Where(p => p.IdProprietario == id)
+            var proprietario = await _db
+                .Proprietari.Where(p => p.IdProprietario == id)
                 .Select(p => new
                 {
                     Proprietario = new
@@ -83,7 +83,14 @@ namespace BACK_END_CLINICA.Controllers
                     },
 
                     Animali = p
-                        .Animali.Select(a => new { Nome = a.NomeAnimale, Specie = a.SpecieAnimale, DataNascita = a.DataNascita, ColoreAnimale = a.ColoreAnimale, Microchip= a.Microchip })
+                        .Animali.Select(a => new
+                        {
+                            Nome = a.NomeAnimale,
+                            Specie = a.SpecieAnimale,
+                            DataNascita = a.DataNascita,
+                            ColoreAnimale = a.ColoreAnimale,
+                            Microchip = a.Microchip
+                        })
                         .ToList()
                 })
                 .FirstOrDefaultAsync();
@@ -96,8 +103,7 @@ namespace BACK_END_CLINICA.Controllers
             return Ok(proprietario);
         }
 
-        
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<IActionResult> UpdateProprietario(ProprietarioEditModel proprietario)
         {
             if (ModelState.IsValid == false)

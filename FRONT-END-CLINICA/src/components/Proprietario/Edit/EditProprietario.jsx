@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchProprietarioById, fetchUpdateProprietario } from "../../../redux/actions/actions";
+import { fetchProprietarioById, fetchUpdateProprietario } from "../../../redux/actions/proprietario";
 
 function EditProprietario() {
   const p = useSelector((state) => state.proprietario.singoloProprietario);
@@ -85,5 +85,6 @@ function EditProprietario() {
     </Container>
   );
 }
+import { fromJS } from "immutable";
 
 export default EditProprietario;

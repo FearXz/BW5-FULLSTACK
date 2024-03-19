@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCreateAnimale, fetchListaProprietari } from "../../../redux/actions/actions";
+import { fetchCreateAnimale } from "../../../redux/actions/animale";
+import { fetchListaProprietari } from "../../../redux/actions/proprietario";
 
 function FormCreateAnimale() {
 
@@ -17,7 +18,7 @@ function FormCreateAnimale() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const proprietarioObj = {
+    const animaleObj = {
       NomeAnimale: NomeAnimale,
       IdProprietario: IdProprietario,
       DataNascita: DataNascita,
@@ -27,7 +28,7 @@ function FormCreateAnimale() {
 
     };
 
-    dispatch(fetchCreateAnimale(proprietarioObj));
+    dispatch(fetchCreateAnimale(animaleObj));
   };
 
   useEffect(() => {

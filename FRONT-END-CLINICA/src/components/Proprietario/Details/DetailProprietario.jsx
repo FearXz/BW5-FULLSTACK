@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { fetchProprietarioById } from "../../../redux/actions/actions";
+import  { useEffect } from "react";
+import { fetchProprietarioById } from "../../../redux/actions/proprietario";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Card, Col, Container, Row } from "react-bootstrap";
