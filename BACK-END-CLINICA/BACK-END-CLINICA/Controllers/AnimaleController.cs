@@ -28,6 +28,7 @@ namespace BACK_END_CLINICA.Controllers
                 {
                     Animale = new
                     {
+                        IdAnimale = p.IdAnimale,
                         Nome = p.NomeAnimale,
                         Specie = p.SpecieAnimale,
                         Proprietario = new
@@ -41,6 +42,97 @@ namespace BACK_END_CLINICA.Controllers
 
             return Ok(animali);
         }
+
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAnimale(int id)
+        {
+            var animale = await _db
+                .Animali
+                .Where(a => a.IdAnimale == id)
+                .Select(p => new
+                {
+                    Animale = new
+                    {
+                        Nome = p.NomeAnimale,
+                        Specie = p.SpecieAnimale,
+                        DataNascita = p.DataNascita,
+                        ColoreAnimale = p.ColoreAnimale,
+                        Microchip = p.Microchip,
+
+                        Proprietario = new
+                        {
+                            IdProprietario = p.Proprietario.IdProprietario,
+                            Nome = p.Proprietario.NomeProprietario,
+                            Cognome = p.Proprietario.CognomeProprietario
+                        }
+                    }
+                })
+                .FirstOrDefaultAsync();
+
+            return Ok(animale);
+        }
+
+        [HttpPost("edit/{id}")]
+        public async Task<IActionResult> EditAnimale(int id, AnimaleModelPost animale)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return BadRequest();
+            }
+
+            var animaleToEdit = await _db.Animali.FirstOrDefaultAsync(a => a.IdAnimale == id);
+
+            if (animaleToEdit == null)
+            {
+                return NotFound();
+            }
+
+            animaleToEdit.NomeAnimale = animale.NomeAnimale;
+            animaleToEdit.IdProprietario = animale.IdProprietario;
+            animaleToEdit.DataNascita = animale.DataNascita;
+            animaleToEdit.SpecieAnimale = animale.SpecieAnimale;
+            animaleToEdit.ColoreAnimale = animale.ColoreAnimale;
+            animaleToEdit.Microchip = animale.Microchip;
+
+            await _db.SaveChangesAsync();
+            return Ok();
+        }
+
+
+
+
+
+        [HttpGet("list/{idProprietario}")]
+        public async Task<IActionResult> GetAnimaliByProprietario(int idProprietario)
+        {
+            var animali = await _db
+                .Animali
+                .Where(a => a.IdProprietario == idProprietario)
+                .Select(p => new
+                {
+                    Animale = new
+                    {
+                        Nome = p.NomeAnimale,
+                        Specie = p.SpecieAnimale,
+                        Proprietario = new
+                        {
+                            Nome = p.Proprietario.NomeProprietario,
+                            Cognome = p.Proprietario.CognomeProprietario
+                        }
+                    }
+                })
+                .ToListAsync();
+
+            return Ok(animali);
+        }
+
+
+
+
+
+
+
 
         [HttpPost("addAnimale")]
         public async Task<IActionResult> AddAnimale(AnimaleModelPost animale)

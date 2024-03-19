@@ -1,7 +1,7 @@
 import { fetchWithAuth } from "../../functions/interceptor";
 import { setLoggedProfile } from "../reducers/profileReducer";
 import { setListaProprietari } from "../reducers/proprietarioReducer";
-import { setListaAnimali } from "../reducers/animaleReducer";
+import { setAnimaleDaEditare, setListaAnimali } from "../reducers/animaleReducer";
 const url = "https://localhost:7069/";
 
 export const fetchLogin = (path, loginObj) => async (dispatch) => {
@@ -103,3 +103,23 @@ dispatch(setListaAnimali(dataAnimali));
     console.error("Errore nel fetch:", error.message);
   }
 };
+
+export const fetchAnimaleById = (id) => async (dispatch) => {
+  try {
+    const response = await fetchWithAuth(url + "animale/" + id, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const dataAnimale = await response.json();
+      dispatch(setAnimaleDaEditare(dataAnimale));
+    } else {
+      throw new Error("Errore nel recupero dei risultati");
+    }
+  } catch (error) {
+    // Handle errors here, if necessary
+    console.error("Errore nel fetch:", error.message);
+  }
+}

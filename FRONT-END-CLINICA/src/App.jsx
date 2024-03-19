@@ -6,6 +6,8 @@ import LoginForm from "./components/Login/LoginForm";
 import MyNavbar from "./components/MyNavbar";
 import FormCreateProprietario from "./components/Proprietario/Create/FormCreateProprietario";
 import FormCreateAnimale from "./components/Animale/Create/FormCreateAnimale";
+import { ElencoAnimali } from "./components/Animale/Index/ElencoAnimali";
+import EditAnimale from "./components/Animale/Edit/EditAnimale";
 
 function App() {
   return (
@@ -44,6 +46,15 @@ function App() {
             </>
           }
         />
+         <Route
+          path="/Animale/Index"
+          element={
+            <>
+              <ElencoAnimali />
+            </>
+          }
+        />
+        <Route path="/Animale/Edit/:AnimaleId" element={<EditAnimale />} />
       </Routes>
     </BrowserRouter>
   );

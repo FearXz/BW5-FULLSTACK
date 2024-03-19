@@ -18,14 +18,14 @@ function MyNavbar() {
             <NavLink className={"nav-link"} to={"/Proprietario/Create"}>Proprietari</NavLink>
             <NavDropdown title="Animali" id="basic-nav-dropdown">
               <NavDropdown.Item to={"/Animale/Create"} as={NavLink} className={""}>Aggiungi animale</NavDropdown.Item>
-              {/* <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item to={"/Animale/Index"} as={NavLink}>
                 Elenco Animali
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">
                 Separated link
-              </NavDropdown.Item> */}
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
             <NavLink className={"nav-link"} to={"/login"}>Login</NavLink>
