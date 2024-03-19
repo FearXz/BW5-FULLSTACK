@@ -16,5 +16,5 @@ const animaleReducer = createSlice({
 });
 
 // Esporto solo l'azione definita nello slice
-export const { setanimaleReducer } = animaleReducer.actions;
+export const { setListaAnimali } = animaleReducer.actions;
 export default animaleReducer.reducer;

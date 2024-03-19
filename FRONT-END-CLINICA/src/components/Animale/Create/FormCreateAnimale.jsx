@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCreateProprietario, fetchListaAnimali } from "../../../redux/actions/actions";
+import { fetchCreateAnimale, fetchListaAnimali } from "../../../redux/actions/actions";
 
 function FormCreateAnimale() {
 
   const [NomeAnimale, setNomeAnimale] = useState("");
-  const [ProprietarioId, setProprietarioId] = useState("");
+  const [IdProprietario, setIdProprietario] = useState("");
   const [DataNascita, setDataNascita] = useState("");
   const [SpecieAnimale, setSpecieAnimale] = useState("");
   const [ColoreAnimale, setColoreAnimale] = useState("");
@@ -19,6 +19,7 @@ function FormCreateAnimale() {
 
     const proprietarioObj = {
       NomeAnimale: NomeAnimale,
+      IdProprietario: IdProprietario,
       DataNascita: DataNascita,
       SpecieAnimale: SpecieAnimale,
       ColoreAnimale: ColoreAnimale,
@@ -26,7 +27,7 @@ function FormCreateAnimale() {
 
     };
 
-    dispatch(fetchCreateProprietario(proprietarioObj));
+    dispatch(fetchCreateAnimale(proprietarioObj));
   };
 
   return (
@@ -42,10 +43,10 @@ function FormCreateAnimale() {
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Proprietario</Form.Label>
-          <Form.Select value={ProprietarioId} onChange={(e) => setProprietarioId(e.currentTarget.value)}>
+          <Form.Select value={IdProprietario} onChange={(e) => setIdProprietario(e.currentTarget.value)}>
             <option value="">Seleziona un proprietario</option>
             {proprietari && proprietari.map((item) => (
-              <option key={item.proprietario.idProprietario} value={item.proprietario.idProprietario}>
+              <option key={item.proprietario.IdProprietario} value={item.proprietario.idProprietario}>
                 {item.proprietario.nome}
               </option>
             ))}

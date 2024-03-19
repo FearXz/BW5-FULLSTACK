@@ -67,7 +67,7 @@ export const fetchCreateProprietario = (proprietarioObj) => async () => {
 
 export const fetchCreateAnimale = (animaleObj) => async () => {
   try {
-    const response = await fetchWithAuth(url + "animale/addanimale", {
+    const response = await fetchWithAuth(url + "animale/addAnimale", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

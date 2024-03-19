@@ -42,23 +42,27 @@ namespace BACK_END_CLINICA.Controllers
             return Ok(animali);
         }
 
-        [HttpPost("addproprietario")]
-        public async Task<IActionResult> AddProprietario(ProprietarioModel proprietario)
+        [HttpPost("addAnimale")]
+        public async Task<IActionResult> AddAnimale(AnimaleModelPost animale)
         {
             if (ModelState.IsValid == false)
             {
                 return BadRequest();
             }
 
-            Proprietario newProp = new Proprietario
+            Animale newAnimal = new Animale
             {
-                NomeProprietario = proprietario.NomeProprietario,
-                CognomeProprietario = proprietario.CognomeProprietario,
-                CodiceFiscale = proprietario.CodiceFiscale,
-                NumeroTelefono = proprietario.NumeroTelefono
+                NomeAnimale = animale.NomeAnimale,
+                IdProprietario = animale.IdProprietario,
+                DataNascita = animale.DataNascita,
+                DataRegistrazione = DateTime.Now,
+                SpecieAnimale = animale.SpecieAnimale,
+                ColoreAnimale = animale.ColoreAnimale,
+                Microchip = animale.Microchip
+
             };
 
-            await _db.Proprietari.AddAsync(newProp);
+            await _db.Animali.AddAsync(newAnimal);
             await _db.SaveChangesAsync();
 
             return Ok();
