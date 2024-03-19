@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { fetchUpdateProprietario } from "../../../redux/actions/actions";
@@ -8,8 +8,12 @@ function EditProprietario() {
   const [cognome, setCognome] = useState("");
   const [codiceFiscale, setCodiceFiscale] = useState("");
   const [telefono, setTelefono] = useState("");
-
+  const { id } = useParams();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchGetProprietarioById(id));
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
