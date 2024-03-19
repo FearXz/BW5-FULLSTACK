@@ -7,6 +7,8 @@ import MyNavbar from "./components/MyNavbar";
 import FormCreateProprietario from "./components/Proprietario/Create/FormCreateProprietario";
 import FormCreateAnimale from "./components/Animale/Create/FormCreateAnimale";
 import Proprietario from "./components/Proprietario/Proprietario";
+import DetailProprietario from "./components/Proprietario/Details/DetailProprietario";
+import EditProprietario from "./components/Proprietario/Edit/EditProprietario";
 
 function App() {
   return (
@@ -45,6 +47,8 @@ function App() {
             </>
           }
         />
+        <Route path="/Proprietario/Details/:id" element={<DetailProprietario />} />
+        <Route path="/Proprietario/Edit/:id" element={<EditProprietario />} />
         <Route
           path="/Animale/Create"
           element={
