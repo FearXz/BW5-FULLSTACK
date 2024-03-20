@@ -39,7 +39,7 @@ function MyNavbar() {
             </NavDropdown>
 
             <NavDropdown title="Animali" id="basic-nav-dropdown">
-              <NavDropdown.Item to={"/Animale/Index"} as={NavLink}>
+              <NavDropdown.Item to={"/Animale"} as={NavLink}>
                 Lista Animali
               </NavDropdown.Item>
               <NavDropdown.Item to={"/Animale/Create"} as={NavLink} className={""}>
@@ -48,7 +48,7 @@ function MyNavbar() {
             </NavDropdown>
 
             <NavDropdown title="Visite" id="basic-nav-dropdown">
-              <NavDropdown.Item to={"/Visite/Index"} as={NavLink} className={""}>
+              <NavDropdown.Item to={"/Visite"} as={NavLink} className={""}>
                 Lista visite
               </NavDropdown.Item>
               <NavDropdown.Item to={"/Visite/Create"} as={NavLink} className={""}>
@@ -57,7 +57,7 @@ function MyNavbar() {
             </NavDropdown>
 
             <NavDropdown title="Ricoveri" id="basic-nav-dropdown">
-              <NavDropdown.Item to={"/Ricovero/Index"} as={NavLink} className={""}>
+              <NavDropdown.Item to={"/Ricovero"} as={NavLink} className={""}>
                 Lista ricoveri
               </NavDropdown.Item>
               <NavDropdown.Item to={"/Ricovero/Create"} as={NavLink} className={""}>
