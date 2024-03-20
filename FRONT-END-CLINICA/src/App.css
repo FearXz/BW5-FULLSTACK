@@ -1,14 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Prosto+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Prosto+One&display=swap");
 
 #epiclinic {
   font-family: "Prosto One", sans-serif;
- 
+
   font-size: 26px;
 }
 .CustomNavBar {
   background-color: #ffffff;
   padding: 10px;
-  font-size: 18px;
+  font-size: 19px;
   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
   position: sticky;
   top: 0;
@@ -19,23 +19,23 @@
   display: block;
   padding: 0px 7px;
   font-size: var(--bs-nav-link-font-size);
-  font-weight: var(--bs-nav-link-font-weight);
-
+  font-weight: 600;
+  font-family: "Nanum Myeongjo", sans-serif;
   text-decoration: none;
   background: none;
   border: 0;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 .nav-link:hover {
-  color: #797979;
+  color: #098ccb;
   text-decoration: none;
   background-color: #ffffff;
   border: 0;
 }
 .nav-link:focus {
-  color: #3b3b3b;
+  color: #098ccb;
 
-  font-weight: 500;
+  font-weight: 10000;
 
   border: 0;
 }
