@@ -90,7 +90,7 @@ function FormCreateVisite() {
         </Form.Group>
 
         <Button variant="primary" type="submit">
-          Submit
+          Aggiungi
         </Button>
       </Form>
     </Container>

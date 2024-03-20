@@ -15,13 +15,13 @@ function Proprietario() {
     dispatch(fetchListaProprietari());
   }, []);
 
-  const filteredProprietari = listaProprietari 
-  ? listaProprietari.filter(
-      (proprietario) =>
-        proprietario.proprietario.nome.toLowerCase().includes(search.toLowerCase()) ||
-        proprietario.proprietario.cognome.toLowerCase().includes(search.toLowerCase())
-    )
-  : [];
+  const filteredProprietari = listaProprietari
+    ? listaProprietari.filter(
+        (proprietario) =>
+          proprietario.proprietario.nome.toLowerCase().includes(search.toLowerCase()) ||
+          proprietario.proprietario.cognome.toLowerCase().includes(search.toLowerCase())
+      )
+    : [];
   return (
     <Container className="mt-3">
       <h1 className="text-center">Lista proprietari</h1>
@@ -35,7 +35,7 @@ function Proprietario() {
       <Row className="g-3">
         {filteredProprietari &&
           filteredProprietari.map((obj, index) => (
-            <Col className="col-4" key={index}>
+            <Col className="col-12 col-md-6 col-lg-4" key={index}>
               <Card className="bg-light bg-opacity-75">
                 <Card.Body>
                   <Card.Title>

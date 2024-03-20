@@ -30,7 +30,7 @@ function EditProprietario() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-     const updatedProprietarioObj = {
+    const updatedProprietarioObj = {
       IdProprietario: p.proprietario.idProprietario,
       NomeProprietario: nome,
       CognomeProprietario: cognome,
@@ -38,8 +38,7 @@ function EditProprietario() {
       NumeroTelefono: telefono,
     };
 
-
-    dispatch(fetchUpdateProprietario(updatedProprietarioObj)); 
+    dispatch(fetchUpdateProprietario(updatedProprietarioObj));
   };
 
   return (
@@ -79,7 +78,7 @@ function EditProprietario() {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          Salva Modifiche
         </Button>
       </Form>
     </Container>

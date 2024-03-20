@@ -5,7 +5,6 @@ import { fetchCreateAnimale } from "../../../redux/actions/animale";
 import { fetchListaProprietari } from "../../../redux/actions/proprietario";
 
 function FormCreateAnimale() {
-
   const [NomeAnimale, setNomeAnimale] = useState("");
   const [IdProprietario, setIdProprietario] = useState("");
   const [DataNascita, setDataNascita] = useState("");
@@ -13,7 +12,7 @@ function FormCreateAnimale() {
   const [ColoreAnimale, setColoreAnimale] = useState("");
   const [Microchip, setMicrochip] = useState("");
   const dispatch = useDispatch();
-  const proprietari = useSelector(state => state.proprietario.listaProprietari);
+  const proprietari = useSelector((state) => state.proprietario.listaProprietari);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,15 +24,14 @@ function FormCreateAnimale() {
       SpecieAnimale: SpecieAnimale,
       ColoreAnimale: ColoreAnimale,
       Microchip: Microchip,
-
     };
 
     dispatch(fetchCreateAnimale(animaleObj));
   };
 
   useEffect(() => {
-		fetchListaProprietari();
-	});
+    fetchListaProprietari();
+  });
 
   return (
     <Container>
@@ -41,18 +39,24 @@ function FormCreateAnimale() {
         <h1>Aggiungi Animale</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Nome</Form.Label>
-          <Form.Control type="text" placeholder="Inserisci il nome dell'animale" value={NomeAnimale} onChange={(e) => setNomeAnimale(e.currentTarget.value)} />
+          <Form.Control
+            type="text"
+            placeholder="Inserisci il nome dell'animale"
+            value={NomeAnimale}
+            onChange={(e) => setNomeAnimale(e.currentTarget.value)}
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Proprietario</Form.Label>
           <Form.Select value={IdProprietario} onChange={(e) => setIdProprietario(e.currentTarget.value)}>
             <option value="">Seleziona un proprietario</option>
-            {proprietari && proprietari.map((item) => (
-              <option key={item.proprietario.codiceFiscale} value={item.proprietario.idProprietario}>
-                {item.proprietario.nome}
-              </option>
-            ))}
+            {proprietari &&
+              proprietari.map((item) => (
+                <option key={item.proprietario.codiceFiscale} value={item.proprietario.idProprietario}>
+                  {item.proprietario.nome}
+                </option>
+              ))}
           </Form.Select>
         </Form.Group>
 
@@ -94,7 +98,7 @@ function FormCreateAnimale() {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          Aggiungi
         </Button>
       </Form>
     </Container>

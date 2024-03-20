@@ -24,7 +24,7 @@ function FormCreateProprietario() {
 
     dispatch(fetchCreateProprietario(proprietarioObj));
 
-    window.location.href = '/Proprietario';
+    window.location.href = "/Proprietario";
   };
 
   return (
@@ -64,7 +64,7 @@ function FormCreateProprietario() {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          Aggiungi
         </Button>
       </Form>
     </Container>

@@ -51,22 +51,29 @@ function DetailProprietario() {
             <h2 className="">Dettagli proprietario</h2>
             {p && (
               <>
-                <h4>
-                  {p.proprietario.nome} {p.proprietario.cognome}
-                </h4>
-                <div className="d-flex align-items-baseline">
-                  <strong>Codice fiscale: </strong>
-                  <span className="ms-2">{p.proprietario.codiceFiscale}</span>
+                <div className="row my-5">
+                  {" "}
+                  <div className=" col-md-10 offset-md-1">
+                    <div className="card align-items-center p-2">
+                      <h4>
+                        {p.proprietario.nome} {p.proprietario.cognome}
+                      </h4>
+                      <div className="d-flex align-items-baseline">
+                        <strong>Codice fiscale: </strong>
+                        <span className="ms-2">{p.proprietario.codiceFiscale}</span>
+                      </div>
+                      <div className="d-flex align-items-baseline">
+                        <strong>Numero telefono: </strong>
+                        <span className="ms-2">{p.proprietario.numeroTelefono}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="d-flex align-items-baseline">
-                  <strong>Numero telefono: </strong>
-                  <span className="ms-2">{p.proprietario.numeroTelefono}</span>
-                </div>
-                <div className="d-flex align-items-center my-3">
-                  <h5 className="m-0 me-1">Animali</h5>
-                  <Button variant="light" onClick={handleShow}>
-                    Aggiungi animale
+                <div className="my-3">
+                  <Button variant="primary" onClick={handleShow}>
+                    Aggiungi nuovo animale
                   </Button>
+                  <h4 className="my-5 text-center">Elenco Animali</h4>
                 </div>
 
                 <Modal show={show} onHide={handleClose}>
@@ -137,7 +144,7 @@ function DetailProprietario() {
 
                 <Row className="">
                   {p.animali.map((obj, index) => (
-                    <Col className="col-2" key={index}>
+                    <Col className="col-12 col-md-6 col-lg-4" key={index}>
                       <Card className="bg-light bg-opacity-75">
                         <Card.Body>
                           <div className="d-flex align-items-baseline">

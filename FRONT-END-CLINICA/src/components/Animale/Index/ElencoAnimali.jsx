@@ -32,7 +32,7 @@ export const ElencoAnimali = () => {
       <Row className="g-3">
         {filteredAnimali &&
           filteredAnimali.map((obj, index) => (
-            <Col className="col-4" key={index}>
+            <Col className="col-12 col-md-6 col-lg-4" key={index}>
               <Card className="bg-light bg-opacity-75">
                 <Card.Body>
                   <Card.Title>{obj.animale.nome}</Card.Title>
