@@ -62,7 +62,7 @@ export const fetchVisitaById = (id) => async (dispatch) => {
 
 export const fetchEditVisita = (visitaObj) => async () => {
   try {
-    await fetchWithAuth(url + "visita/editanimal", {
+    await fetchWithAuth(url + "visita/update", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
