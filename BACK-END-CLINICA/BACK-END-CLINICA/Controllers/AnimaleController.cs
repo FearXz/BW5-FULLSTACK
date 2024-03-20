@@ -42,7 +42,7 @@ namespace BACK_END_CLINICA.Controllers
 
             return Ok(animali);
         }
-
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAnimale(int id)
         {

@@ -42,7 +42,7 @@ export const ElencoAnimali = () => {
                   </div>
 
                   <div className="d-flex justify-content-end">
-                    <Link className="btn btn-dark me-1" to={"/Aniamle/Details/" + obj.animale.idAnimale}>
+                    <Link className="btn btn-dark me-1" to={"/Animale/Details/" + obj.animale.idAnimale}>
                       <FontAwesomeIcon icon={faInfoCircle} />
                     </Link>
                     <Link className="btn btn-dark" to={"/Animale/Edit/" + obj.animale.idAnimale}>

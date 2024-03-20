@@ -17,6 +17,7 @@ import EditVisite from "./components/Visite/Edit/EditVisite";
 import { ElencoRicoveri } from "./components/Ricovero/Index/ElencoRicoveri";
 import FormCreateRicovero from "./components/Ricovero/Create/FormCreateRicovero";
 import EditRicovero from "./components/Ricovero/Edit/EditRicovero";
+import DetailAnimale from "./components/Animale/Details/DetailAnimale";
 function App() {
   return (
     <BrowserRouter>
@@ -36,6 +37,7 @@ function App() {
         <Route path="/Animale">
           <Route index element={<ElencoAnimali />} />
           <Route path="Create" element={<FormCreateAnimale />} />
+          <Route path="Details/:id" element={<DetailAnimale />} />
           <Route path="Edit/:AnimaleId" element={<EditAnimale />} />
         </Route>
 
