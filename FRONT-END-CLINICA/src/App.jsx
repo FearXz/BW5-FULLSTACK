@@ -47,8 +47,8 @@ function App() {
 
         <Route path="/Ricovero">
           <Route index element={<ElencoRicoveri />} />
-          <Route path="Create/" element={<FormCreateVisite />} />
-          <Route path="Edit/:id" element={<EditVisite />} />
+          <Route path="Create" element={<FormCreateRicovero />} />
+          <Route path="Edit/:id" element={<EditRicovero />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -39,10 +39,10 @@ const ElencoVisite = () => {
                     <Card.Text className="ms-2">{item.visita.costoVisita} euro </Card.Text>
                   </div>
                   <div className="d-flex justify-content-end">
-                    <Link className="btn btn-dark me-1" to={"/Visita/Details/" + item.visita.idVisita}>
+                    <Link className="btn btn-dark me-1" to={"/Visite/Details/" + item.visita.idVisita}>
                       <FontAwesomeIcon icon={faInfoCircle} />
                     </Link>
-                    <Link className="btn btn-dark" to={"/Visita/Edit/" + item.visita.idVisita}>
+                    <Link className="btn btn-dark" to={"/Visite/Edit/" + item.visita.idVisita}>
                       <FontAwesomeIcon icon={faEdit} />
                     </Link>
                   </div>
