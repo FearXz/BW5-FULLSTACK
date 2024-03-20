@@ -16,9 +16,7 @@ function MyNavbar() {
               alt="Clinica kebab logo"
               style={{ width: "80px" }}
             />
-            <p className="m-0" id="epiclinic">
-              EpiClinic
-            </p>
+            <p className="m-0 epiclinic">EpiClinic</p>
           </div>
         </NavbarBrand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -27,7 +25,7 @@ function MyNavbar() {
             Home
           </NavLink>
 
-          <NavDropdown title="Proprietari" id="basic-nav-dropdown">
+          <NavDropdown title="Proprietari" id="basic-nav-dropdown" className="custom-dropdown">
             <NavDropdown.Item to={"/Proprietario"} as={NavLink} className={"custom-dropdown-item"}>
               Lista proprietari
             </NavDropdown.Item>
@@ -36,7 +34,7 @@ function MyNavbar() {
             </NavDropdown.Item>
           </NavDropdown>
 
-          <NavDropdown title="Animali" id="basic-nav-dropdown">
+          <NavDropdown title="Animali" id="basic-nav-dropdown" className="custom-dropdown">
             <NavDropdown.Item to={"/Animale"} as={NavLink}>
               Lista Animali
             </NavDropdown.Item>
@@ -45,7 +43,7 @@ function MyNavbar() {
             </NavDropdown.Item>
           </NavDropdown>
 
-          <NavDropdown title="Visite" id="basic-nav-dropdown">
+          <NavDropdown title="Visite" id="basic-nav-dropdown" className="custom-dropdown">
             <NavDropdown.Item to={"/Visite"} as={NavLink} className={""}>
               Lista visite
             </NavDropdown.Item>
@@ -54,7 +52,7 @@ function MyNavbar() {
             </NavDropdown.Item>
           </NavDropdown>
 
-          <NavDropdown title="Ricoveri" id="basic-nav-dropdown" className="me-auto">
+          <NavDropdown title="Ricoveri" id="basic-nav-dropdown" className="me-auto custom-dropdown">
             <NavDropdown.Item to={"/Ricovero"} as={NavLink} className={""}>
               Lista ricoveri
             </NavDropdown.Item>
