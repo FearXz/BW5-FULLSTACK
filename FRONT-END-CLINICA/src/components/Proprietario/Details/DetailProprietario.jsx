@@ -1,10 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchProprietarioById } from "../../../redux/actions/proprietario";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Form, Modal, Row } from "react-bootstrap";
+import { fetchCreateAnimale } from "../../../redux/actions/animale";
 
 function DetailProprietario() {
+  const [NomeAnimale, setNomeAnimale] = useState("");
+  const [IdProprietario, setIdProprietario] = useState("");
+  const [DataNascita, setDataNascita] = useState("");
+  const [SpecieAnimale, setSpecieAnimale] = useState("");
+  const [ColoreAnimale, setColoreAnimale] = useState("");
+  const [Microchip, setMicrochip] = useState("");
+
+  const [refresh, setRefresh] = useState(false);
+
   const dispatch = useDispatch();
   const { id } = useParams();
   const p = useSelector((state) => state.proprietario.singoloProprietario);
@@ -14,7 +24,24 @@ function DetailProprietario() {
 
   useEffect(() => {
     dispatch(fetchProprietarioById(id));
-  }, []);
+  }, [refresh]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const animaleObj = {
+      NomeAnimale: NomeAnimale,
+      IdProprietario: p.proprietario.idProprietario,
+      DataNascita: DataNascita,
+      SpecieAnimale: SpecieAnimale,
+      ColoreAnimale: ColoreAnimale,
+      Microchip: Microchip,
+    };
+
+    dispatch(fetchCreateAnimale(animaleObj));
+    setRefresh((prev) => !prev);
+    handleClose();
+  };
 
   return (
     <div>
@@ -43,69 +70,99 @@ function DetailProprietario() {
                 </div>
 
                 <Modal show={show} onHide={handleClose}>
-                  <Modal.Header closeButton>
-                    <Modal.Title>Aggiungi animale</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <Form>
+                  <Form onSubmit={handleSubmit}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Aggiungi animale</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <h1>Aggiungi Animale</h1>
                       <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
-                        <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
+                        <Form.Label>Nome</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Inserisci il nome dell'animale"
+                          value={NomeAnimale}
+                          onChange={(e) => setNomeAnimale(e.currentTarget.value)}
+                        />
                       </Form.Group>
 
                       <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Label>Data di Nascita</Form.Label>
+                        <Form.Control
+                          type="date"
+                          placeholder="Inserisci la data di nascita"
+                          value={DataNascita}
+                          onChange={(e) => setDataNascita(e.currentTarget.value)}
+                        />
                       </Form.Group>
-                      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
+
+                      <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Specie Animale</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Indica la specie dell'animale (es. cane, gatto, ecc)"
+                          value={SpecieAnimale}
+                          onChange={(e) => setSpecieAnimale(e.currentTarget.value)}
+                        />
                       </Form.Group>
-                      <Button variant="primary" type="submit">
-                        Submit
+                      <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Colore Animale</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Indica il colore dell'animale (es. nero, bianco ecc)"
+                          value={ColoreAnimale}
+                          onChange={(e) => setColoreAnimale(e.currentTarget.value)}
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Microchip</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Se l'animale ha microchip inseriscilo qui"
+                          value={Microchip}
+                          onChange={(e) => setMicrochip(e.currentTarget.value)}
+                        />
+                      </Form.Group>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        Chiudi
                       </Button>
-                    </Form>
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                      Chiudi
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                      Aggiungi
-                    </Button>
-                  </Modal.Footer>
+                      <Button variant="primary" type="submit">
+                        Aggiungi
+                      </Button>
+                    </Modal.Footer>
+                  </Form>
                 </Modal>
 
-                <Row>
+                <Row className="">
                   {p.animali.map((obj, index) => (
-                    <Container key={index}>
-                      <Col className="col-2">
-                        <Card className="bg-light bg-opacity-75">
-                          <Card.Body>
-                            <div className="d-flex align-items-baseline">
-                              <Card.Subtitle>Nome: </Card.Subtitle>
-                              <Card.Text className="ms-2">{obj.nome}</Card.Text>
-                            </div>
-                            <div className="d-flex align-items-baseline">
-                              <Card.Subtitle>Specie: </Card.Subtitle>
-                              <Card.Text className="ms-2">{obj.specie}</Card.Text>
-                            </div>
-                            <div className="d-flex align-items-baseline">
-                              <Card.Subtitle>Data di nascita: </Card.Subtitle>
-                              <Card.Text className="ms-2">{new Date(obj.dataNascita).toLocaleDateString()}</Card.Text>
-                            </div>
-                            <div className="d-flex align-items-baseline">
-                              <Card.Subtitle>Colore: </Card.Subtitle>
-                              <Card.Text className="ms-2">{obj.coloreAnimale}</Card.Text>
-                            </div>
-                            <div className="d-flex align-items-baseline">
-                              <Card.Subtitle>Microchip: </Card.Subtitle>
-                              <Card.Text className="ms-2">{obj.microchip ? obj.microchip : "No"}</Card.Text>
-                            </div>
-                          </Card.Body>
-                        </Card>
-                      </Col>
-                    </Container>
+                    <Col className="col-2" key={index}>
+                      <Card className="bg-light bg-opacity-75">
+                        <Card.Body>
+                          <div className="d-flex align-items-baseline">
+                            <Card.Subtitle>Nome: </Card.Subtitle>
+                            <Card.Text className="ms-2">{obj.nome}</Card.Text>
+                          </div>
+                          <div className="d-flex align-items-baseline">
+                            <Card.Subtitle>Specie: </Card.Subtitle>
+                            <Card.Text className="ms-2">{obj.specie}</Card.Text>
+                          </div>
+                          <div className="d-flex align-items-baseline">
+                            <Card.Subtitle>Data di nascita: </Card.Subtitle>
+                            <Card.Text className="ms-2">{new Date(obj.dataNascita).toLocaleDateString()}</Card.Text>
+                          </div>
+                          <div className="d-flex align-items-baseline">
+                            <Card.Subtitle>Colore: </Card.Subtitle>
+                            <Card.Text className="ms-2">{obj.coloreAnimale}</Card.Text>
+                          </div>
+                          <div className="d-flex align-items-baseline">
+                            <Card.Subtitle>Microchip: </Card.Subtitle>
+                            <Card.Text className="ms-2">{obj.microchip ? obj.microchip : "No"}</Card.Text>
+                          </div>
+                        </Card.Body>
+                      </Card>
+                    </Col>
                   ))}
                 </Row>
               </>
