@@ -8,9 +8,7 @@ import { faInfoCircle, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 export function ElencoRicoveri() {
 	const dispatch = useDispatch();
-	const elencoRicoveri = useSelector(
-		(state) => state.ricovero.elencoRicoveri
-	);
+	const elencoRicoveri = useSelector((state) => state.ricovero.listaRicoveri);
 
 	useEffect(() => {
 		dispatch(fetchListaRicoveri());
@@ -21,19 +19,19 @@ export function ElencoRicoveri() {
 			<h2 className="text-center">Lista ricoveri</h2>
 			<Row>
 				{elencoRicoveri &&
-					elencoRicoveri.map((obj, index) => (
-						<Col className="col-4" key={index}>
+					elencoRicoveri.map((item, index) => (
+						<Col className="col-4" key={`${index}-ricoveri`}>
 							<Card className="bg-light bg-opacity-75">
 								<Card.Body>
 									<Card.Title>
-										{obj.ricovero.IdRicovero}{" "}
-										{obj.ricovero.IdAnimale}
+										{item.ricovero.animale.nomeAnimale}
 									</Card.Title>
-									<div className="d-flex align-items-baseline">
-										<Card.Subtitle>Foto: </Card.Subtitle>
-										<Card.Text className="ms-2">
-											{obj.ricovero.FotoAnimale}
-										</Card.Text>
+									<div className="d-flex justify-content-center">
+										<img
+											className="img-fluid fix-h-300 fix-w-300"
+											src={item.ricovero.fotoAnimale}
+											alt="foto animale"
+										/>
 									</div>
 
 									<div className="d-flex align-items-baseline">
@@ -41,7 +39,7 @@ export function ElencoRicoveri() {
 											Prezzo: €{" "}
 										</Card.Subtitle>
 										<Card.Text className="ms-2">
-											{obj.ricovero.PrezzoRicovero}
+											{item.ricovero.prezzoRicovero}
 										</Card.Text>
 									</div>
 									<div className="d-flex justify-content-end">
@@ -49,7 +47,7 @@ export function ElencoRicoveri() {
 											className="btn btn-dark me-1"
 											to={
 												"/Ricoveri/Details/" +
-												obj.ricovero.idRicovero
+												item.ricovero.idRicovero
 											}>
 											<FontAwesomeIcon
 												icon={faInfoCircle}
@@ -59,7 +57,7 @@ export function ElencoRicoveri() {
 											className="btn btn-dark"
 											to={
 												"/Ricoveri/Edit/" +
-												obj.ricovero.idRicovero
+												item.ricovero.idRicovero
 											}>
 											<FontAwesomeIcon icon={faEdit} />
 										</Link>
