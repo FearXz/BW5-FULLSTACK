@@ -24,7 +24,7 @@ function Proprietario() {
   : [];
   return (
     <Container className="mt-3">
-      <h2 className="text-center">Lista proprietari</h2>
+      <h1 className="text-center">Lista proprietari</h1>
       <div>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">

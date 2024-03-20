@@ -16,7 +16,7 @@ export function ElencoRicoveri() {
   }, []);
   return (
     <Container className="mt-3">
-      <h2 className="text-center">Lista ricoveri</h2>
+      <h1 className="text-center">Lista ricoveri</h1>
       <Row>
         {elencoRicoveri &&
           elencoRicoveri.map((item, index) => (

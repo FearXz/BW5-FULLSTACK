@@ -21,7 +21,7 @@ export const ElencoAnimali = () => {
 
   return (
     <Container className="mt-3">
-      <h2 className="text-center">Lista animali</h2>
+      <h1 className="text-center">Lista animali</h1>
       <div>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
