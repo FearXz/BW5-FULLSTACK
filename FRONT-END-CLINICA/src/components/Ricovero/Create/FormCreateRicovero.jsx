@@ -21,11 +21,13 @@ function FormCreateRicovero() {
     const ricoveroObj = {
       IdAnimale: idAnimale,
       DataInizioRicovero: dataInizioRicovero,
-      FotoAnimale: fotoAnimale,
       PrezzoRicovero: prezzoRicovero,
     };
 
-    dispatch(fetchCreateRicovero(ricoveroObj));
+    const formData = new FormData();
+    formData.append("fotoAnimale", fotoAnimale);
+
+    dispatch(fetchCreateRicovero(ricoveroObj, formData));
   };
   useEffect(() => {
     dispatch(fetchListaAnimali());
@@ -61,12 +63,7 @@ function FormCreateRicovero() {
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Foto Animale</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Foto Animale"
-            value={fotoAnimale}
-            onChange={(e) => setFotoAnimale(e.currentTarget.value)}
-          />
+          <Form.Control accept="image/*" type="file" onChange={(e) => setFotoAnimale(e.target.files[0])} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">

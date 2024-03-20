@@ -6,8 +6,6 @@
 
         public DateTime DataInizioRicovero { get; set; }
 
-        public string FotoAnimale { get; set; }
-
         public double PrezzoRicovero { get; set; }
     }
 }

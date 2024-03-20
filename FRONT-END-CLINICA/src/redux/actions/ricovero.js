@@ -2,15 +2,27 @@ import { fetchWithAuth } from "../../functions/interceptor";
 import { url } from "../../functions/config";
 import { setListaRicoveri, setRicoveroDaEditare } from "../reducers/ricoveroReducer";
 
-export const fetchCreateRicovero = (ricoveroObj) => async () => {
+export const fetchCreateRicovero = (ricoveroObj, formData) => async () => {
   try {
-    await fetchWithAuth(url + "ricovero/addRicovero", {
+    const response = await fetchWithAuth(url + "ricovero/addRicovero", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(ricoveroObj),
     });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+
+      const response2 = await fetchWithAuth(url + "ricovero/addRicoveroImg/" + data.ricovero.idRicovero, {
+        method: "POST",
+        body: formData,
+      });
+    } else {
+      throw new Error("Errore nel recupero dei risultati");
+    }
   } catch (error) {
     // Puoi gestire gli errori qui, se necessario
     console.error("Errore nel fetch:", error.message);

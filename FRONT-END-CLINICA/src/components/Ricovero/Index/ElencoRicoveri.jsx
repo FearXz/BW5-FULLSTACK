@@ -5,11 +5,13 @@ import { fetchListaRicoveri } from "../../../redux/actions/ricovero";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { url } from "../../../functions/config";
 
 export function ElencoRicoveri() {
   const dispatch = useDispatch();
   const elencoRicoveri = useSelector((state) => state.ricovero.listaRicoveri);
 
+  const localHost = url;
   useEffect(() => {
     dispatch(fetchListaRicoveri());
     console.log(elencoRicoveri);
@@ -26,7 +28,11 @@ export function ElencoRicoveri() {
                   <Card.Title>Numero ricovero: {item.ricovero.idRicovero}</Card.Title>
                   <Card.Title>Nome Animale: {item.ricovero.animale.nomeAnimale}</Card.Title>
                   <div className="d-flex justify-content-center">
-                    <img className="img-fluid fix-h-300 fix-w-300" src={item.ricovero.fotoAnimale} alt="foto animale" />
+                    <img
+                      className="img-fluid fix-h-300 fix-w-300"
+                      src={`${localHost}${item.ricovero.fotoAnimale}`}
+                      alt="foto animale"
+                    />
                   </div>
 
                   <div className="ms-2">

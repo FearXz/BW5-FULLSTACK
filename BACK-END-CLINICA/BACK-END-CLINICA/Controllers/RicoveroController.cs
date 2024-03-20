@@ -69,21 +69,49 @@ namespace BACK_END_CLINICA.Controllers
             {
                 IdAnimale = ricovero.IdAnimale,
                 DataInizioRicovero = ricovero.DataInizioRicovero,
-                FotoAnimale = ricovero.FotoAnimale,
                 PrezzoRicovero = ricovero.PrezzoRicovero
             };
 
             await _db.Ricoveri.AddAsync(newRic);
             await _db.SaveChangesAsync();
 
-            return Ok();
+            return Ok(new { Ricovero = new { idRicovero = newRic.IdRicovero } });
         }
 
+        [HttpPost("addRicoveroImg/{idRicovero}")]
+        public async Task<IActionResult> AddRicoveroImg(
+            int idRicovero,
+            [FromForm] IFormFile fotoAnimale
+        )
+        {
+            if (fotoAnimale == null || fotoAnimale.Length == 0)
+            {
+                return BadRequest("Nessuna immagine fornita");
+            }
+
+            var ricovero = await _db.Ricoveri.FindAsync(idRicovero);
+            if (ricovero == null)
+            {
+                return NotFound();
+            }
+
+            var wwwrootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+            var imagePath = Path.Combine(wwwrootPath, "images", fotoAnimale.FileName);
+
+            using (var stream = new FileStream(imagePath, FileMode.Create))
+            {
+                await fotoAnimale.CopyToAsync(stream);
+            }
+
+            ricovero.FotoAnimale = "/images/" + fotoAnimale.FileName;
+            await _db.SaveChangesAsync();
+
+            return Ok();
+        }
 
         //dettaglio ricovero
         // GET /ricovero/1
         [HttpGet("{id}")]
-
         public async Task<IActionResult> GetRicovero(int id)
         {
             var ricovero = await _db
@@ -105,7 +133,6 @@ namespace BACK_END_CLINICA.Controllers
                 return NotFound();
             }
             return Ok(ricovero);
-
         }
 
         [HttpPut("update")]

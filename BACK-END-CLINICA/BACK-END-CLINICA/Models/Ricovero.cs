@@ -16,7 +16,7 @@ namespace BACK_END_CLINICA.Models
         public DateTime DataInizioRicovero { get; set; }
 
         [Required]
-        public string FotoAnimale { get; set; }
+        public string FotoAnimale { get; set; } = "default.jpg";
 
         [Required]
         public double PrezzoRicovero { get; set; }
