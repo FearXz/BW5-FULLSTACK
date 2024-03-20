@@ -100,3 +100,22 @@
   font-size: 1.3em;
   font-weight: 500;
 }
+/* This will change the background color of the dropdown menu */
+.custom-dropdown .dropdown-menu {
+  background-color: #ffffff;
+  border: 0;
+  border-radius: 3px;
+
+  animation: openAnimation 0.5s forwards;
+}
+
+@keyframes openAnimation {
+  0% {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

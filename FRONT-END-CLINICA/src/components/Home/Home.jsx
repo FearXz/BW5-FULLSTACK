@@ -23,7 +23,7 @@ function Home() {
       </div>
       <div className="container my-5 py-3">
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-lg-4">
             <div className="card">
               <img
                 className="card-img"
@@ -39,7 +39,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="col-md-4">
+          <div className="col-lg-4">
             <div className="card">
               <img
                 className="card-img"
@@ -55,7 +55,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="col-md-4">
+          <div className="col-lg-4">
             <div className="card">
               <img
                 className="card-img"

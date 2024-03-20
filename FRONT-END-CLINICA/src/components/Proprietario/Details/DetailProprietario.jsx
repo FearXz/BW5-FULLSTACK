@@ -52,7 +52,6 @@ function DetailProprietario() {
             {p && (
               <>
                 <div className="row my-5">
-                  {" "}
                   <div className=" col-md-10 offset-md-1">
                     <div className="card align-items-center p-2">
                       <h4>
