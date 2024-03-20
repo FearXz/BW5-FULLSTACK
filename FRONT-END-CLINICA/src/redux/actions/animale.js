@@ -50,6 +50,7 @@ export const fetchAnimaleById = (id) => async (dispatch) => {
 
     if (response.ok) {
       const dataAnimale = await response.json();
+      
       dispatch(setAnimaleDaEditare(dataAnimale));
     } else {
       throw new Error("Errore nel recupero dei risultati");
