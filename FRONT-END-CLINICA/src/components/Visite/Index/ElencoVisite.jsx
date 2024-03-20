@@ -18,10 +18,10 @@ const ElencoVisite = () => {
   return (
     <Container className="mt-3">
       <h1 className="text-center">Lista visite</h1>
-      <Row>
+      <Row className="g-3">
         {listaVisite &&
           listaVisite.map((item, index) => (
-            <Col className="col-4" key={`${index}-visite`}>
+            <Col className="col-12 col-md-6 col-lg-4" key={`${index}-visite`}>
               <Card className="bg-light bg-opacity-75">
                 <Card.Body>
                   <Card.Title>Id visita: {item.visita.idVisita}</Card.Title>
@@ -39,10 +39,10 @@ const ElencoVisite = () => {
                     <Card.Text className="ms-2">{item.visita.costoVisita} euro </Card.Text>
                   </div>
                   <div className="d-flex justify-content-end">
-                    <Link className="btn btn-dark me-1" to={"/Visita/Details/" + item.visita.idVisita}>
+                    <Link className="btn btn-dark me-1" to={"/Visite/Details/" + item.visita.idVisita}>
                       <FontAwesomeIcon icon={faInfoCircle} />
                     </Link>
-                    <Link className="btn btn-dark" to={"/Visita/Edit/" + item.visita.idVisita}>
+                    <Link className="btn btn-dark" to={"/Visite/Edit/" + item.visita.idVisita}>
                       <FontAwesomeIcon icon={faEdit} />
                     </Link>
                   </div>
