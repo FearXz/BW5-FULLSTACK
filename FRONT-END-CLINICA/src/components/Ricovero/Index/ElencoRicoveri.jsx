@@ -17,25 +17,31 @@ export function ElencoRicoveri() {
   return (
     <Container className="mt-3">
       <h1 className="text-center">Lista ricoveri</h1>
-      <Row>
+      <Row className="g-3">
         {elencoRicoveri &&
           elencoRicoveri.map((item, index) => (
-            <Col className="col-4" key={`${index}-ricoveri`}>
+            <Col className="col-12 col-md-6 col-lg-4" key={`${index}-ricoveri`}>
               <Card className="bg-light bg-opacity-75">
                 <Card.Body>
-                  <Card.Title>{item.ricovero.animale.nomeAnimale}</Card.Title>
+                  <Card.Title>Numero ricovero: {item.ricovero.idRicovero}</Card.Title>
+                  <Card.Title>Nome Animale: {item.ricovero.animale.nomeAnimale}</Card.Title>
                   <div className="d-flex justify-content-center">
                     <img className="img-fluid fix-h-300 fix-w-300" src={item.ricovero.fotoAnimale} alt="foto animale" />
                   </div>
 
-                  <div className="d-flex align-items-baseline">
-                    <Card.Subtitle>Prezzo: € </Card.Subtitle>
-                    <Card.Text className="ms-2">{item.ricovero.prezzoRicovero}</Card.Text>
+                  <div className="ms-2">
+                    <Card.Text>
+                      <strong>Data inizio ricovero: </strong>
+                      {new Date(item.ricovero.dataInizioRicovero).toLocaleDateString()}
+                    </Card.Text>
+                    <Card.Text>
+                      <strong>Prezzo Ricovero: </strong>€{item.ricovero.prezzoRicovero}
+                    </Card.Text>
                   </div>
                   <div className="d-flex justify-content-end">
-                    <Link className="btn btn-dark me-1" to={"/Ricovero/Details/" + item.ricovero.idRicovero}>
+                    {/* <Link className="btn btn-dark me-1" to={"/Ricovero/Details/" + item.ricovero.idRicovero}>
                       <FontAwesomeIcon icon={faInfoCircle} />
-                    </Link>
+                    </Link> */}
                     <Link className="btn btn-dark" to={"/Ricovero/Edit/" + item.ricovero.idRicovero}>
                       <FontAwesomeIcon icon={faEdit} />
                     </Link>
