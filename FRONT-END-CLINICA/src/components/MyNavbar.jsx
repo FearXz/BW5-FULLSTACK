@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 function MyNavbar() {
   return (
-    <Navbar expand="lg" className=" navbar navbar-expand-lg  CustomNavBar">
+    <Navbar expand="lg" className=" navbar navbar-expand-lg  CustomNavBar" style={{ zIndex: 1000 }}>
       <Container>
         <NavbarBrand to={"/"}>
           <div className="d-flex flex-column align-items-center justify-content-center">
