@@ -1,4 +1,6 @@
 ﻿using BACK_END_CLINICA.Data;
+using BACK_END_CLINICA.Models;
+using BACK_END_CLINICA.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -54,5 +56,74 @@ namespace BACK_END_CLINICA.Controllers
 
             return Ok(ricoveri);
         }
+
+        [HttpPost("addricovero")]
+        public async Task<IActionResult> AddRicovero(RicoveroModelPost ricovero)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return BadRequest();
+            }
+
+            Ricovero newRic = new Ricovero
+            {
+                IdAnimale = ricovero.IdAnimale,
+                DataInizioRicovero = ricovero.DataInizioRicovero,
+                FotoAnimale = ricovero.FotoAnimale,
+                PrezzoRicovero = ricovero.PrezzoRicovero
+            };
+
+            await _db.Ricoveri.AddAsync(newRic);
+            await _db.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> GetRicovero(int id)
+        {
+            var ricovero = await _db
+                .Ricoveri.Where(r => r.IdRicovero == id)
+                .Select(r => new
+                {
+                    Ricovero = new
+                    {
+                        IdRicovero = r.IdRicovero,
+                        IdAnimale = r.IdAnimale
+                    }
+                })
+                .FirstOrDefaultAsync();
+            if (ricovero == null)
+            {
+                return NotFound();
+            }
+            return Ok(ricovero);
+
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateRicovero(int id, RicoveroModelPost ricovero)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return BadRequest();
+            }
+
+            var ric = await _db.Ricoveri.FindAsync(id);
+            if (ric == null)
+            {
+                return NotFound();
+            }
+
+            ric.IdAnimale = ricovero.IdAnimale;
+            ric.DataInizioRicovero = ricovero.DataInizioRicovero;
+            ric.FotoAnimale = ricovero.FotoAnimale;
+            ric.PrezzoRicovero = ricovero.PrezzoRicovero;
+
+            await _db.SaveChangesAsync();
+
+            return Ok();
+        }   
     }
 }
