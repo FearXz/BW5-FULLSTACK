@@ -79,6 +79,9 @@ namespace BACK_END_CLINICA.Controllers
             return Ok();
         }
 
+
+        //dettaglio ricovero
+        // GET /ricovero/1
         [HttpGet("{id}")]
 
         public async Task<IActionResult> GetRicovero(int id)
@@ -90,7 +93,10 @@ namespace BACK_END_CLINICA.Controllers
                     Ricovero = new
                     {
                         IdRicovero = r.IdRicovero,
-                        IdAnimale = r.IdAnimale
+                        IdAnimale = r.IdAnimale,
+                        DataInizioRicovero = r.DataInizioRicovero,
+                        FotoAnimale = r.FotoAnimale,
+                        PrezzoRicovero = r.PrezzoRicovero,
                     }
                 })
                 .FirstOrDefaultAsync();
@@ -102,15 +108,15 @@ namespace BACK_END_CLINICA.Controllers
 
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateRicovero(int id, RicoveroModelPost ricovero)
+        [HttpPut("update")]
+        public async Task<IActionResult> UpdateRicovero(RicoveroModelEdit ricovero)
         {
             if (ModelState.IsValid == false)
             {
                 return BadRequest();
             }
 
-            var ric = await _db.Ricoveri.FindAsync(id);
+            var ric = await _db.Ricoveri.FindAsync(ricovero.IdRicovero);
             if (ric == null)
             {
                 return NotFound();
@@ -124,6 +130,6 @@ namespace BACK_END_CLINICA.Controllers
             await _db.SaveChangesAsync();
 
             return Ok();
-        }   
+        }
     }
 }
