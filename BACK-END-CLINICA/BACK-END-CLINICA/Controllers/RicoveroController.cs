@@ -96,14 +96,15 @@ namespace BACK_END_CLINICA.Controllers
             }
 
             var wwwrootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
-            var imagePath = Path.Combine(wwwrootPath, "images", fotoAnimale.FileName);
+            var fileName = Path.GetRandomFileName() + Path.GetExtension(fotoAnimale.FileName);
+            var imagePath = Path.Combine(wwwrootPath, "images", fileName);
 
             using (var stream = new FileStream(imagePath, FileMode.Create))
             {
                 await fotoAnimale.CopyToAsync(stream);
             }
 
-            ricovero.FotoAnimale = "/images/" + fotoAnimale.FileName;
+            ricovero.FotoAnimale = "/images/" + fileName;
             await _db.SaveChangesAsync();
 
             return Ok();
