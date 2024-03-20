@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { fetchCreateProprietario } from "../../../redux/actions/proprietario";
+import { unstable_HistoryRouter } from "react-router-dom";
 
 function FormCreateProprietario() {
   const [nome, setNome] = useState("");
@@ -22,6 +23,8 @@ function FormCreateProprietario() {
     };
 
     dispatch(fetchCreateProprietario(proprietarioObj));
+
+    window.location.href = '/Proprietario';
   };
 
   return (
