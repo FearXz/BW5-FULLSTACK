@@ -1,9 +1,8 @@
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import { fetchProprietarioById } from "../../../redux/actions/proprietario";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Card, Col, Container, Row } from "react-bootstrap";
-
 
 function DetailProprietario() {
   const dispatch = useDispatch();
@@ -37,7 +36,7 @@ function DetailProprietario() {
 
                 <Row>
                   {p.animali.map((obj, index) => (
-                    <Container>
+                    <Container key={index}>
                       <Col className="col-2">
                         <Card className="bg-light bg-opacity-75" key={index}>
                           <Card.Body>
