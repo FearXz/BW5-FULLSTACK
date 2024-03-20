@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { fetchProprietarioById } from "../../../redux/actions/proprietario";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, useParams } from "react-router-dom";
-import { Button, Card, Col, Container, Modal, Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { Card, Col, Container, Row } from "react-bootstrap";
 
 function DetailProprietario() {
   const dispatch = useDispatch();
