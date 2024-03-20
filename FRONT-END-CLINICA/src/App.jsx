@@ -15,6 +15,8 @@ import Home from "./components/Home/Home";
 import FormCreateVisite from "./components/Visite/Create/FormCreateVisite";
 import EditVisite from "./components/Visite/Edit/EditVisite";
 import { ElencoRicoveri } from "./components/Ricovero/Index/ElencoRicoveri";
+import FormCreateRicovero from "./components/Ricovero/Create/FormCreateRicovero";
+import EditRicovero from "./components/Ricovero/Edit/EditRicovero";
 function App() {
   return (
     <BrowserRouter>
