@@ -7,18 +7,30 @@ import { NavLink } from "react-router-dom";
 
 function MyNavbar() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <div expand="lg" className=" navbar navbar-expand-lg  CustomNavBar">
       <Container>
-        <NavbarBrand to={"/"}>Clinica kebab</NavbarBrand>
+        <NavbarBrand to={"/"}>
+          <div className="d-flex flex-column align-items-center justify-content-center">
+            <img
+              src="https://www.clinicaveterinariadesantis.it/wp-content/uploads/2021/10/Logo-Clinica-Veterinaria-Patrizia-De-Santis.png" // Replace with your image path
+              className="d-inline-block align-top"
+              alt="Clinica kebab logo"
+              style={{ width: "80px" }}
+            />
+            <p className="m-0" id="epiclinic">
+              EpiClinic
+            </p>
+          </div>
+        </NavbarBrand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <div className="nav me-auto">
             <NavLink className={"nav-link"} to="/">
               Home
             </NavLink>
 
             <NavDropdown title="Proprietari" id="basic-nav-dropdown">
-              <NavDropdown.Item to={"/Proprietario"} as={NavLink} className={""}>
+              <NavDropdown.Item to={"/Proprietario"} as={NavLink} className={"custom-dropdown-item"}>
                 Lista proprietari
               </NavDropdown.Item>
               <NavDropdown.Item to={"/Proprietario/Create"} as={NavLink} className={""}>
@@ -52,13 +64,15 @@ function MyNavbar() {
                 Aggiungi ricovero
               </NavDropdown.Item>
             </NavDropdown>
-          </Nav>
-          <NavLink className={"nav-link"} to={"/login"}>
-            Login
-          </NavLink>
+          </div>
+          <div>
+            <NavLink className={"nav-link"} to={"/login"}>
+              Login
+            </NavLink>
+          </div>
         </Navbar.Collapse>
       </Container>
-    </Navbar>
+    </div>
   );
 }
 
