@@ -16,7 +16,7 @@ function MyNavbar() {
               alt="Clinica kebab logo"
               style={{ width: "80px" }}
             />
-            <p className="m-0" id="epiclinic">
+            <p className="m-0 epiclinic" >
               EpiClinic
             </p>
           </div>

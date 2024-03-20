@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Prosto+One&display=swap");
-
-#epiclinic {
+/* navbar */
+.epiclinic {
   font-family: "Prosto One", sans-serif;
 
   font-size: 26px;
@@ -38,4 +38,65 @@
   font-weight: 10000;
 
   border: 0;
+}
+/* homepage */
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+.jumbotron {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(151, 151, 151, 0.397); /* Adjust opacity as needed */
+  padding: 20px;
+  text-align: center;
+  z-index: 1; /* Ensure jumbotron appears over the image */
+  width: 70%;
+  max-width: 70em;
+  height: 70%;
+  max-height: 70em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 20px;
+}
+.epiclinic2 {
+  font-family: "Prosto One", sans-serif;
+  color: #ffffff;
+
+  font-size: 8vw;
+}
+.jumbolead {
+  color: #ffffff;
+  font-style: italic;
+  font-weight: 100;
+
+  font-size: 2vw;
+}
+.customCardTitle {
+  font-family: "Nanum Myeongjo", sans-serif;
+  font-size: 2.4em;
+  font-weight: 1000;
+}
+.card-img {
+  height: 25em;
+  object-fit: cover;
+}
+.cardText {
+  background-color: #ffffff80;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  border: none;
+}
+.card-text {
+  font-family: "Nanum Myeongjo", sans-serif;
+  font-size: 1.3em;
+  font-weight: 500;
 }
