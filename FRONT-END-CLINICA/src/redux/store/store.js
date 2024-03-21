@@ -8,6 +8,7 @@ import expireReducer from "redux-persist-expire";
 import animaleReducer from "../reducers/animaleReducer";
 import visiteReducer from "../reducers/visiteReducer";
 import ricoveroReducer from "../reducers/ricoveroReducer";
+import prodottoReducer from "../reducers/prodottoReducer";
 
 const persistConfig = {
 	key: "root",
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
 	animale: animaleReducer,
 	visita: visiteReducer,
 	ricovero: ricoveroReducer,
+	prodotto: prodottoReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
