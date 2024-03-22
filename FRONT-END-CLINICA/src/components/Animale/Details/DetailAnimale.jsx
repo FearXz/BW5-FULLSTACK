@@ -44,8 +44,6 @@ function DetailAnimale() {
     handleClose();
   };
 
-  console.log(visitaObj);
-
   return (
     <div>
       <Container className="mt-4">
@@ -57,27 +55,27 @@ function DetailAnimale() {
                 <div className="row my-5">
                   <div className=" col-md-10 offset-md-1">
                     <div className="card align-items-center p-2"></div>
-                    <h4>{a.animale.nome}</h4>
+                    {/* <h4>{a.animale.nome}</h4> */}
                     <div className="d-flex align-items-baseline">
                       <strong>Specie: </strong>
-                      <span className="ms-2">{a.animale.specie}</span>
+                      {/* <span className="ms-2">{a.animale.specie}</span> */}
                     </div>
                     <div className="d-flex align-items-baseline">
                       <strong>Data di nascita: </strong>
-                      {new Date(a.animale.dataNascita).toLocaleDateString()}
+                      {/* {new Date(a.animale.dataNascita).toLocaleDateString()} */}
                     </div>
                     <div className="d-flex align-items-baseline">
                       <strong>Colore: </strong>
-                      <span className="ms-2">{a.animale.colore}</span>
+                      {/* <span className="ms-2">{a.animale.colore}</span> */}
                     </div>
                     <div className="d-flex align-items-baseline">
                       <strong>Microchip:</strong>
-                      <span className="ms-2">{a.animale.microchip ? a.animale.microchip : "No"}</span>
+                      {/* <span className="ms-2">{a.animale.microchip ? a.animale.microchip : "No"}</span> */}
                     </div>
                     <div className="d-flex align-items-baseline">
                       <strong>Proprietario:</strong>
                       <span className="ms-2">
-                        {a.animale.proprietario.nome} {a.animale.proprietario.cognome}
+                        {/* {a.animale.proprietario.nome} {a.animale.proprietario.cognome} */}
                       </span>
                     </div>
                   </div>

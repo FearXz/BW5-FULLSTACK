@@ -8,9 +8,6 @@ namespace BACK_END_CLINICA.Models
         [Key]
         public int IdProdotto { get; set; }
 
-        [Required]
-        [ForeignKey("Fornitore")]
-        public int IdFornitore { get; set; }
 
         [Required]
         public string NomeProdotto { get; set; }
@@ -28,7 +25,6 @@ namespace BACK_END_CLINICA.Models
         public int? QuantitaProdotto { get; set; }
 
         // navigation property
-        public virtual Fornitore Fornitore { get; set; }
         public virtual ICollection<ProdottiVenduti> ProdottiVenduti { get; set; }
         //MEGA KEBAB
     }

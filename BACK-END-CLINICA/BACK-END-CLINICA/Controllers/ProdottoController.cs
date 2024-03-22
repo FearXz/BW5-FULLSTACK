@@ -29,7 +29,6 @@ namespace BACK_END_CLINICA.Controllers
                     Prodotto = new
                     {
                         IdProdotto = p.IdProdotto,
-                        IdFornitore = p.IdFornitore,
                         NomeProdotto = p.NomeProdotto,
                         DescrizioneProdotto = p.DescrizioneProdotto,
                         TipoProdotto = p.TipoProdotto,
@@ -37,14 +36,6 @@ namespace BACK_END_CLINICA.Controllers
                         NArmadio = p.NArmadio,
                         NCassetto = p.NCassetto,
                         QuantitaProdotto = p.QuantitaProdotto,
-                        Fornitore = new
-                        {
-                            IdFornitore = p.Fornitore.IdFornitore,
-                            NomeFornitore = p.Fornitore.NomeFornitore,
-                            IndirizzoFornitore = p.Fornitore.IndirizzoFornitore,
-                            TelefonoFornitore = p.Fornitore.TelefonoFornitore,
-                            EmailFornitore = p.Fornitore.EmailFornitore
-                        }
 
                     }
                 })
@@ -63,7 +54,6 @@ namespace BACK_END_CLINICA.Controllers
                     Prodotto = new
                     {
                         IdProdotto = p.IdProdotto,
-                        IdFornitore = p.IdFornitore,
                         NomeProdotto = p.NomeProdotto,
                         DescrizioneProdotto = p.DescrizioneProdotto,
                         TipoProdotto = p.TipoProdotto,
@@ -71,14 +61,6 @@ namespace BACK_END_CLINICA.Controllers
                         NArmadio = p.NArmadio,
                         NCassetto = p.NCassetto,
                         QuantitaProdotto = p.QuantitaProdotto,
-                        Fornitore = new
-                        {
-                            IdFornitore = p.Fornitore.IdFornitore,
-                            NomeFornitore = p.Fornitore.NomeFornitore,
-                            IndirizzoFornitore = p.Fornitore.IndirizzoFornitore,
-                            TelefonoFornitore = p.Fornitore.TelefonoFornitore,
-                            EmailFornitore = p.Fornitore.EmailFornitore
-                        }
 
                     }
                 })
@@ -146,7 +128,6 @@ namespace BACK_END_CLINICA.Controllers
 
             Prodotto newProdotto = new Prodotto
             {
-                IdFornitore = prodotto.IdFornitore,
                 NomeProdotto = prodotto.NomeProdotto,
                 DescrizioneProdotto = prodotto.DescrizioneProdotto,
                 TipoProdotto = prodotto.TipoProdotto,
@@ -179,7 +160,6 @@ namespace BACK_END_CLINICA.Controllers
                 return NotFound();
             }
 
-            myProdotto.IdFornitore = prodotto.IdFornitore;
             myProdotto.NomeProdotto = prodotto.NomeProdotto;
             myProdotto.DescrizioneProdotto = prodotto.DescrizioneProdotto;
             myProdotto.TipoProdotto = prodotto.TipoProdotto;
