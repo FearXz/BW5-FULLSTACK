@@ -5,8 +5,9 @@ import {
 	fetchAnimaleById,
 	fetchEditAnimale,
 } from "../../../redux/actions/animale";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchListaProprietari } from "../../../redux/actions/proprietario";
+import { formatData } from "../../../functions/config";
 
 export const DetailAnimale = () => {
 	const [NomeAnimale, setNomeAnimale] = useState("");
@@ -19,11 +20,6 @@ export const DetailAnimale = () => {
 
 	const { animaleDaEditare } = useSelector((state) => state.animale);
 	const { id } = useParams();
-
-	const formatData = (data) => {
-		setDataNascita(data);
-		console.log(data);
-	};
 
 	useEffect(() => {
 		dispatch(fetchAnimaleById(id)); // necessario per avere i dati dell'animale da editare
@@ -48,24 +44,72 @@ export const DetailAnimale = () => {
 
 	return (
 		<Container>
-			<h1>Dettagli animale</h1>
-			<Card>
-				<Card.Title>
-					<h2>Nome: {NomeAnimale}</h2>
-				</Card.Title>
-				<Card.Body>
-					{/* <dt>Proprietario: </dt>
-       <dd> {animaleDaEditare.proprietario.nome} {animaleDaEditare.proprietario.cognome}</dd>
-        <dt>Data di nascita: </dt>
-        <dd>{DataNascita}</dd>
-        <dt>Specie: </dt>
-        <dd>{SpecieAnimale}</dd>
-        <dt>Colore: </dt>
-        <dd>{ColoreAnimale}</dd>
-        <dt>Microchip: </dt>
-        <dd>{Microchip}</dd> */}
-				</Card.Body>
-			</Card>
+			<h1 className="my-5 text-center">Dettagli animale</h1>
+			{animaleDaEditare && (
+				<>
+					<Card className="border border-2 p-4">
+						<Card.Title>
+							<dt>Nome: </dt>
+							<dd>{NomeAnimale}</dd>
+							<hr />
+						</Card.Title>
+						<Card.Body className="p-0">
+							<dt>Proprietario: </dt>
+							<dd>
+								{animaleDaEditare.animale.proprietario.nome}
+							</dd>
+							<dt>Data di nascita: </dt>
+							<dd>{DataNascita}</dd>
+							<dt>Specie: </dt>
+							<dd>{SpecieAnimale}</dd>
+							<dt>Colore: </dt>
+							<dd>{ColoreAnimale}</dd>
+							<dt>Microchip: </dt>
+							<dd>{Microchip ? Microchip : "Senza microchip"}</dd>
+							<hr />
+							<Link
+								className="d-block"
+								to={`/animale/edit/${id}`}>
+								Modifica dettagli animale
+							</Link>
+
+							<Link
+								className="d-block mt-4"
+								to={`/Visite/Create/${id}`}>
+								Registra nuova visita
+							</Link>
+						</Card.Body>
+					</Card>
+
+					<hr className="my-4" />
+
+					<h2 className="text-center">Elenco visite</h2>
+					{animaleDaEditare.animale.visite.map((visita, index) => (
+						<Card
+							className="border border-2 p-4 my-3"
+							key={`${index}-visita`}>
+							<Card.Body>
+								<Card.Title>
+									<h3>
+										{formatData(
+											visita.dataVisita
+										).toLocaleUpperCase()}
+									</h3>
+									<hr />
+								</Card.Title>
+								<Card.Text>
+									<dt>Esame obiettivo: </dt>
+									<dd>{visita.esameObiettivo}</dd>
+									<dt>Descrizione cura: </dt>
+									<dd>{visita.descrizioneCura}</dd>
+									<dt>Prezzo: </dt>
+									<dd>{visita.costoVisita}</dd>
+								</Card.Text>
+							</Card.Body>
+						</Card>
+					))}
+				</>
+			)}
 		</Container>
 	);
 };

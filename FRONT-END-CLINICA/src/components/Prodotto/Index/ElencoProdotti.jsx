@@ -50,7 +50,7 @@ export const ElencoProdotti = () => {
 			<h1 className="text-center">Lista Prodotti</h1>
 			<div>
 				<Form>
-					<Form.Group className="mb-3" controlId="formBasicEmail">
+					<Form.Group className="mb-3">
 						<Form.Control
 							type="text"
 							placeholder="Cerca prodotto"
