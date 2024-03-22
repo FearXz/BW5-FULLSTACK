@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart } from "../redux/reducers/cartReducer";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.cart);
@@ -44,6 +45,9 @@ function Cart() {
             </Col>
           ))}
       </Row>
+      <Link to="/checkout" className="btn btn-primary">
+        CHECKOUT
+      </Link>
     </Container>
   );
 }

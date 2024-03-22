@@ -37,9 +37,12 @@ const cartReducer = createSlice({
       state.cart = newCart;
       console.log(state.cart);
     },
+    clearCart: (state) => {
+      state.cart = [];
+    },
   },
 });
 
 // Esporto solo l'azione definita nello slice
-export const { addToCart, removeFromCart } = cartReducer.actions;
+export const { addToCart, removeFromCart, clearCart } = cartReducer.actions;
 export default cartReducer.reducer;

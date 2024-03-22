@@ -30,8 +30,8 @@ function FormCreateAnimale() {
   };
 
   useEffect(() => {
-    fetchListaProprietari();
-  });
+    dispatch(fetchListaProprietari());
+  }, []);
 
   return (
     <Container>

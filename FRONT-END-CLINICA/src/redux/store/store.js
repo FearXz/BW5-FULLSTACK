@@ -12,35 +12,35 @@ import prodottoReducer from "../reducers/prodottoReducer";
 import cartReducer from "../reducers/cartReducer";
 
 const persistConfig = {
-	key: "root",
-	storage,
-	whitelist: ["profile"],
-	transforms: [
-		expireReducer("profile", {
-			expireSeconds: 7 * 24 * 60 * 60, // 7 days
-			expiredState: { loggedProfile: null },
-			autoExpire: true,
-		}),
-	],
+  key: "root",
+  storage,
+  whitelist: ["profile", "cart"],
+
+  transforms: [
+    expireReducer("profile", {
+      expireSeconds: 7 * 24 * 60 * 60, // 7 days
+      expiredState: { loggedProfile: null },
+      autoExpire: true,
+    }),
+  ],
 };
 
 const rootReducer = combineReducers({
-	global: stateReducer,
-	profile: profileReducer,
-	proprietario: proprietarioReducer,
-	animale: animaleReducer,
-	visita: visiteReducer,
-	ricovero: ricoveroReducer,
-	prodotto: prodottoReducer,
-	cart: cartReducer,
+  global: stateReducer,
+  profile: profileReducer,
+  proprietario: proprietarioReducer,
+  animale: animaleReducer,
+  visita: visiteReducer,
+  ricovero: ricoveroReducer,
+  prodotto: prodottoReducer,
+  cart: cartReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-	reducer: persistedReducer,
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware({ serializableCheck: false }),
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 });
 
 export const persistor = persistStore(store);

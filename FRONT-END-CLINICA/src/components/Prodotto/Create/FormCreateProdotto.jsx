@@ -3,30 +3,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { fetchCreateProdotto } from "../../../redux/actions/prodotto";
 
-//           _____                    _____                    _____                    _____                    _____
-//          /\    \                  /\    \                  /\    \                  /\    \                  /\    \
-//         /::\____\                /::\    \                /::\    \                /::\    \                /::\    \
-//        /:::/    /               /::::\    \              /::::\    \              /::::\    \              /::::\    \
-//       /:::/    /               /::::::\    \            /::::::\    \            /::::::\    \            /::::::\    \
-//      /:::/    /               /:::/\:::\    \          /:::/\:::\    \          /:::/\:::\    \          /:::/\:::\    \
-//     /:::/____/               /:::/__\:::\    \        /:::/__\:::\    \        /:::/__\:::\    \        /:::/__\:::\    \
-//    /::::\    \              /::::\   \:::\    \      /::::\   \:::\    \      /::::\   \:::\    \      /::::\   \:::\    \
-//   /::::::\____\________    /::::::\   \:::\    \    /::::::\   \:::\    \    /::::::\   \:::\    \    /::::::\   \:::\    \
-//  /:::/\:::::::::::\    \  /:::/\:::\   \:::\    \  /:::/\:::\   \:::\ ___\  /:::/\:::\   \:::\    \  /:::/\:::\   \:::\____\
-// /:::/  |:::::::::::\____\/:::/__\:::\   \:::\____\/:::/__\:::\   \:::|    |/:::/  \:::\   \:::\____\/:::/  \:::\   \:::|    |
-// \::/   |::|~~~|~~~~~     \:::\   \:::\   \::/    /\:::\   \:::\  /:::|____|\::/    \:::\  /:::/    /\::/    \:::\  /:::|____|
-//  \/____|::|   |           \:::\   \:::\   \/____/  \:::\   \:::\/:::/    /  \/____/ \:::\/:::/    /  \/_____/\:::\/:::/    /
-//        |::|   |            \:::\   \:::\    \       \:::\   \::::::/    /            \::::::/    /            \::::::/    /
-//        |::|   |             \:::\   \:::\____\       \:::\   \::::/    /              \::::/    /              \::::/    /
-//        |::|   |              \:::\   \::/    /        \:::\  /:::/    /               /:::/    /                \::/____/
-//        |::|   |               \:::\   \/____/          \:::\/:::/    /               /:::/    /                  ~~
-//        |::|   |                \:::\    \               \::::::/    /               /:::/    / ciao omar
-//        \::|   |                 \:::\____\               \::::/    /               /:::/    /
-//         \:|   |                  \::/    /                \::/____/                \::/    /
-//          \|___|                   \/____/                  ~~                       \/____/
-
 function FormCreateProdotto() {
-  const [IdFornitore, setIdFornitore] = useState(1);
   const [NomeProdotto, setNomeProdotto] = useState("");
   const [DescrizioneProdotto, setDescrizioneProdotto] = useState("");
   const [TipoProdotto, setTipoProdotto] = useState("");
@@ -35,15 +12,11 @@ function FormCreateProdotto() {
   const [NCassetto, setNCassetto] = useState("");
   const [QuantitaProdotto, setQuantitaProdotto] = useState("");
   const dispatch = useDispatch();
-  // const fornitori = useSelector(
-  // 	(state) => state.fornitore.listaFornitori
-  // ); todo: non esiste da gestire fornitori in backend
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const prodottoObj = {
-      IdFornitore: IdFornitore, // todo: da gestire fornitore in backend
       NomeProdotto: NomeProdotto,
       DescrizioneProdotto: DescrizioneProdotto,
       TipoProdotto: TipoProdotto,
@@ -55,10 +28,6 @@ function FormCreateProdotto() {
 
     dispatch(fetchCreateProdotto(prodottoObj));
   };
-
-  useEffect(() => {
-    //fetchListaFornitori(); fetch che non esiste, da creare todo
-  });
 
   return (
     <Container>
@@ -72,17 +41,6 @@ function FormCreateProdotto() {
             value={NomeProdotto}
             onChange={(e) => setNomeProdotto(e.currentTarget.value)}
           />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Fornitore</Form.Label>
-
-          <Form.Control
-            type="text"
-            placeholder="Inserisci fornitore"
-            value={IdFornitore}
-            onChange={(e) => setIdFornitore(e.currentTarget.value)}
-          ></Form.Control>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
