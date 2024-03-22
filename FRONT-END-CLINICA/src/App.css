@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Prosto+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mynerve&display=swap");
 /* navbar */
 .epiclinic {
   font-family: "Prosto One", sans-serif;
@@ -62,7 +63,18 @@
   align-items: center;
   border-radius: 10px;
   padding: 20px;
+
+  animation: fadeIn 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .epiclinic2 {
   font-family: "Prosto One", sans-serif;
   color: #ffffff;
@@ -78,11 +90,14 @@
 }
 .customCardTitle {
   font-family: "Nanum Myeongjo", sans-serif;
-  font-size: 2.4em;
+
+  font-size: clamp(0.5em, 2.7vh, 2.4em);
   font-weight: 1000;
 }
 .card-img {
-  height: 25em;
+  height: 20em;
+  max-height: 20%;
+
   object-fit: cover;
 }
 .cardText {
@@ -94,13 +109,32 @@
 }
 .card {
   border: none;
+  animation: swing-in-top-fwd 1.3s ease-in-out both;
 }
+
+@keyframes swing-in-top-fwd {
+  0% {
+    -webkit-transform: rotateX(-100deg);
+    transform: rotateX(-100deg);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+    opacity: 1;
+  }
+}
+
 .card-text {
   font-family: "Nanum Myeongjo", sans-serif;
-  font-size: 1.3em;
+  font-size: clamp(0.5em, 19vh, 1.3em);
   font-weight: 500;
 }
-/* This will change the background color of the dropdown menu */
+
 .custom-dropdown .dropdown-menu {
   background-color: #ffffff;
   border: 0;
@@ -118,4 +152,30 @@
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+.CarouselImg {
+  height: 50vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.infoBlock {
+  background-color: #9ac1d42d;
+  padding: 20px;
+  border-radius: 10px;
+  margin-block: 80px 20px;
+}
+
+.infoBlock h1 {
+  font-family: "Mynerve", sans-serif;
+  font-size: 3em;
+  font-weight: 1000;
+  margin-block: 10px;
+}
+
+.infoBlock p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.2em;
+  font-weight: 500;
 }
