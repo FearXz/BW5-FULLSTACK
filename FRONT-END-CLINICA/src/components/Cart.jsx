@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.cart);
+  console.log(cartItems);
   const dispatch = useDispatch();
 
   return (
@@ -19,14 +20,14 @@ function Cart() {
             <Col className="col-12 " key={`${index}-prodotto`}>
               <Card className="bg-light bg-opacity-75">
                 <Card.Body>
-                  <Card.Title>{item.prodotto.nomeProdotto}</Card.Title>
+                  <Card.Title>{item.nomeProdotto}</Card.Title>
                   <div className="d-flex align-items-baseline">
                     <Card.Subtitle>Uso:</Card.Subtitle>
-                    <Card.Text className="ms-2">{item.prodotto.descrizioneProdotto}</Card.Text>
+                    <Card.Text className="ms-2">{item.descrizioneProdotto}</Card.Text>
                   </div>
                   <div className="d-flex align-items-baseline">
                     <Card.Subtitle>Prezzo:</Card.Subtitle>
-                    <Card.Text className="ms-2">{item.prodotto.prezzoProdotto}</Card.Text>
+                    <Card.Text className="ms-2">{item.prezzoProdotto}</Card.Text>
                   </div>
                   <div className="d-flex align-items-baseline">
                     <Card.Subtitle>Quantità:</Card.Subtitle>
