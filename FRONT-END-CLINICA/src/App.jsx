@@ -1,5 +1,5 @@
 import "./assets/css/mybootstrap.min.css";
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -54,6 +54,7 @@ function App() {
 				<Route path="/Visite">
 					<Route index element={<ElencoVisite />} />
 					<Route path="Create" element={<FormCreateVisite />} />
+					<Route path="Create/:id" element={<FormCreateVisite />} />
 					<Route path="Edit/:id" element={<EditVisite />} />
 				</Route>
 
