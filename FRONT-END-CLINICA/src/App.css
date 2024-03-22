@@ -109,7 +109,7 @@
 }
 .card {
   border: none;
-  animation: swing-in-top-fwd 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  animation: swing-in-top-fwd 1.3s ease-in-out both;
 }
 
 @keyframes swing-in-top-fwd {
