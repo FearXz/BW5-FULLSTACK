@@ -29,7 +29,7 @@ export function ElencoRicoveri() {
                   <Card.Title>Nome Animale: {item.ricovero.animale.nomeAnimale}</Card.Title>
                   <div className="d-flex justify-content-center">
                     <img
-                      className="img-fluid fix-h-300 fix-w-300"
+                      className="img-fluid fix-h-300 fix-w-300 rounded shadow"
                       src={`${localHost}${item.ricovero.fotoAnimale}`}
                       alt="foto animale"
                     />
