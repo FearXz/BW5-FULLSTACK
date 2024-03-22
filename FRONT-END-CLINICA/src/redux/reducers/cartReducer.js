@@ -10,29 +10,32 @@ const cartReducer = createSlice({
   reducers: {
     // Azione definita nello slice
     addToCart: (state, action) => {
-      
+      let newCart = [...state.cart];
 
-      const newCart = [...state.cart];
-      const existingProductIndex = newCart.findIndex((product) => product.idProdotto === action.payload.idProdotto);
-
-      if (existingProductIndex >= 0) {
-        newCart[existingProductIndex].quantita += 1;
-        state.cart = newCart;
+      // Verifico se il prodotto è già presente nel carrello
+      let found = newCart.find((item) => item.idProdotto === action.payload.idProdotto);
+      if (found) {
+        // Se il prodotto è già presente nel carrello, incremento la quantità
+        found.quantita++;
       } else {
-        state.cart = [...state.cart, { ...action.payload, quantita: 1 }];
+        // Se il prodotto non è presente nel carrello, lo aggiungo
+        newCart.push(action.payload);
       }
-      console.log("Carrello", state.cart);
+      state.cart = newCart;
+      console.log(state.cart);
     },
     removeFromCart: (state, action) => {
-      console.log("Rimosso dal carrello", action.payload);
-      const index = state.cart.findIndex((product) => product.idProdotto == action.payload.idProdotto);
-
-      if (index != -1) {
-        const newCart = [...state.cart];
-        newCart.splice(index, 1);
-        state.cart = newCart;
+      let newCart = [...state.cart];
+      let found = newCart.find((item) => item.idProdotto === action.payload.idProdotto);
+      if (found) {
+        if (found.quantita > 1) {
+          found.quantita--;
+        } else {
+          newCart = newCart.filter((item) => item.idProdotto !== action.payload.idProdotto);
+        }
       }
-      console.log("Carrello", state.cart);
+      state.cart = newCart;
+      console.log(state.cart);
     },
   },
 });

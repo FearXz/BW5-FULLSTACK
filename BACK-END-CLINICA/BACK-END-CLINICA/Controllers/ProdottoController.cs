@@ -33,10 +33,9 @@ namespace BACK_END_CLINICA.Controllers
                         DescrizioneProdotto = p.DescrizioneProdotto,
                         TipoProdotto = p.TipoProdotto,
                         PrezzoProdotto = p.PrezzoProdotto,
-                        NArmadio = p.NArmadio,
-                        NCassetto = p.NCassetto,
-                        QuantitaProdotto = p.QuantitaProdotto,
-
+                        //NArmadio = p.NArmadio,
+                        //NCassetto = p.NCassetto,
+                        //QuantitaProdotto = p.QuantitaProdotto,
                     }
                 })
                 .ToListAsync();
@@ -61,7 +60,6 @@ namespace BACK_END_CLINICA.Controllers
                         NArmadio = p.NArmadio,
                         NCassetto = p.NCassetto,
                         QuantitaProdotto = p.QuantitaProdotto,
-
                     }
                 })
                 .FirstOrDefaultAsync();
@@ -135,7 +133,6 @@ namespace BACK_END_CLINICA.Controllers
                 NArmadio = prodotto.NArmadio,
                 NCassetto = prodotto.NCassetto,
                 QuantitaProdotto = prodotto.QuantitaProdotto
-
             };
 
             await _db.Prodotti.AddAsync(newProdotto);
