@@ -64,7 +64,7 @@
   border-radius: 10px;
   padding: 20px;
 
-  animation: fadeIn 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: fadeIn 3s ease-in-out;
 }
 @keyframes fadeIn {
   0% {
@@ -107,11 +107,17 @@
   justify-content: center;
   align-items: center;
 }
- .infoBlock {
+.infoBlock {
   border: none;
-  animation: swing-in-top-fwd 3s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  opacity: 0;
+  transform: translateY(50%);
+  transition: all 1s ease-in-out;
 }
 
+.infoBlock.animate {
+  transform: translateY(0);
+  opacity: 1;
+}
 
 @keyframes swing-in-top-fwd {
   0% {
@@ -179,4 +185,22 @@
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 1.2em;
   font-weight: 500;
+}
+.footerCustom {
+  background: linear-gradient(155deg, #098ccb 0%, #c2ecff 100%);
+  padding: 30px;
+  margin-top: 10em;
+
+  color: #ffffff;
+}
+.footerCustom p {
+  font-size: 0.9em;
+  font-weight: 500;
+}
+.footerCustom h5 {
+  font-size: 1.5em;
+  font-weight: 800;
+
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
 }

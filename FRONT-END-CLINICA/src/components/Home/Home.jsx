@@ -1,9 +1,23 @@
 import { useDispatch } from "react-redux";
 import { Container, Row, Col, Button, Card, Carousel } from "react-bootstrap";
 import { fetchListaProprietari } from "../../redux/actions/proprietario";
+import { useEffect, useRef } from "react";
+import Footer from "../Footer";
 
 function Home() {
   const dispatch = useDispatch();
+
+  window.addEventListener("scroll", function () {
+    var infoBlock = document.querySelector(".infoBlock");
+    var top = infoBlock.getBoundingClientRect().top;
+
+    if (top <= window.innerHeight) {
+      infoBlock.classList.add("animate");
+    } else {
+      infoBlock.classList.remove("animate");
+    }
+  });
+
   return (
     <div>
       <div className="m-0 image-container">
@@ -22,7 +36,7 @@ function Home() {
         </div>
       </div>
       {/* 3 cards */}
-      <div className="container my-5 py-3" >
+      <div className="container my-5 py-3">
         <div className="row" id="cardz">
           <div className="col-lg-4">
             <div className="card">
@@ -125,6 +139,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
