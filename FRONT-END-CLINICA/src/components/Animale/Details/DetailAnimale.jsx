@@ -1,33 +1,52 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Container, Form, Modal, Row } from "react-bootstrap";
+import { Button, Card, Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import {
+	fetchAnimaleById,
+	fetchEditAnimale,
+} from "../../../redux/actions/animale";
 import { useParams } from "react-router-dom";
-import { fetchAnimaleById } from "../../../redux/actions/animale";
-import { fetchCreateVisita } from "../../../redux/actions/visite";
+import { fetchListaProprietari } from "../../../redux/actions/proprietario";
 
-function DetailAnimale() {
-  const [idAnimale, setIdAnimale] = useState("");
-  const [dataVisita, setDataVisita] = useState("");
-  const [esameObiettivo, setEsameObiettivo] = useState("");
-  const [descrizioneCura, setDescrizioneCura] = useState("");
-  const [costoVisita, setCostoVisita] = useState("");
+export const DetailAnimale = () => {
+	const [NomeAnimale, setNomeAnimale] = useState("");
+	const [IdProprietario, setIdProprietario] = useState("");
+	const [DataNascita, setDataNascita] = useState("");
+	const [SpecieAnimale, setSpecieAnimale] = useState("");
+	const [ColoreAnimale, setColoreAnimale] = useState("");
+	const [Microchip, setMicrochip] = useState("");
+	const dispatch = useDispatch();
 
-  const [refresh, setRefresh] = useState(false);
+	const { animaleDaEditare } = useSelector((state) => state.animale);
+	const { id } = useParams();
 
-  const dispatch = useDispatch();
-  const { id } = useParams();
-  const a = useSelector((state) => state.animale.listaAnimali);
-  const animali = useSelector((state) => state.animale.listaAnimali);
-  const v = useSelector((state) => state.visita.listaVisite);
+	const formatData = (data) => {
+		setDataNascita(data);
+		console.log(data);
+	};
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+	useEffect(() => {
+		dispatch(fetchAnimaleById(id)); // necessario per avere i dati dell'animale da editare
+	}, []);
 
-  useEffect(() => {
-    dispatch(fetchAnimaleById(id));
-  }, [refresh]);
+	useEffect(() => {
+		if (animaleDaEditare) {
+			setNomeAnimale(animaleDaEditare.animale.nome);
+			setIdProprietario(
+				animaleDaEditare.animale.proprietario.idProprietario
+			);
+			const date = new Date(animaleDaEditare.animale.dataNascita);
+			const formattedDate = `${date.getFullYear()}-${String(
+				date.getMonth() + 1
+			).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+			setDataNascita(formattedDate);
+			setSpecieAnimale(animaleDaEditare.animale.specie);
+			setColoreAnimale(animaleDaEditare.animale.coloreAnimale);
+			setMicrochip(animaleDaEditare.animale.microchip);
+		}
+	}, [animaleDaEditare]);
 
+<<<<<<< HEAD
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -181,5 +200,30 @@ function DetailAnimale() {
     </div>
   );
 }
+=======
+	return (
+		<Container>
+			<h1>Dettagli animale</h1>
+			<Card>
+				<Card.Title>
+					<h2>Nome: {NomeAnimale}</h2>
+				</Card.Title>
+				<Card.Body>
+					{/* <dt>Proprietario: </dt>
+       <dd> {animaleDaEditare.proprietario.nome} {animaleDaEditare.proprietario.cognome}</dd>
+        <dt>Data di nascita: </dt>
+        <dd>{DataNascita}</dd>
+        <dt>Specie: </dt>
+        <dd>{SpecieAnimale}</dd>
+        <dt>Colore: </dt>
+        <dd>{ColoreAnimale}</dd>
+        <dt>Microchip: </dt>
+        <dd>{Microchip}</dd> */}
+				</Card.Body>
+			</Card>
+		</Container>
+	);
+};
+>>>>>>> 74d988215269c64ec4c94e4509ea567daf88b5ce
 
 export default DetailAnimale;

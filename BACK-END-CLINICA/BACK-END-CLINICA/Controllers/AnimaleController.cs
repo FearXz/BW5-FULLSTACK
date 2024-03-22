@@ -42,7 +42,7 @@ namespace BACK_END_CLINICA.Controllers
 
             return Ok(animali);
         }
-        
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAnimale(int id)
         {
@@ -64,7 +64,18 @@ namespace BACK_END_CLINICA.Controllers
                             IdProprietario = p.Proprietario.IdProprietario,
                             Nome = p.Proprietario.NomeProprietario,
                             Cognome = p.Proprietario.CognomeProprietario
-                        }
+                        },
+
+                        Visite = p.Visite.Select(v => new
+                        {
+                            IdVisita = v.IdVisita,
+                            DataVisita = v.DataVisita,
+                            EsameObiettivo = v.EsameObiettivo,
+                            DescrizioneCura = v.DescrizioneCura,
+                            CostoVisita = v.CostoVisita
+                        })
+
+
                     }
                 })
                 .FirstOrDefaultAsync();
