@@ -22,8 +22,8 @@ function Home() {
         </div>
       </div>
       {/* 3 cards */}
-      <div className="container my-5 py-3" id="cardz">
-        <div className="row">
+      <div className="container my-5 py-3" >
+        <div className="row" id="cardz">
           <div className="col-lg-4">
             <div className="card">
               <img

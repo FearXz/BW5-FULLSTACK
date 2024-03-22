@@ -24,6 +24,7 @@ import { ElencoProdotti } from "./components/Prodotto/Index/ElencoProdotti";
 import FormCreateProdotto from "./components/Prodotto/Create/FormCreateProdotto";
 import EditProdotto from "./components/Prodotto/Edit/EditProdotto";
 import DetailProdotto from "./components/Prodotto/Details/DetailProdotto";
+import Cart from "./components/Cart";
 function App() {
 	return (
 		<BrowserRouter>
@@ -68,6 +69,7 @@ function App() {
 					<Route path="Details/:id" element={<DetailProdotto />} />
 					<Route path="Edit/:id" element={<EditProdotto />} />
 				</Route>
+				<Route path="/Carrello" element={<Cart/>} />
 			</Routes>
 		</BrowserRouter>
 	);
