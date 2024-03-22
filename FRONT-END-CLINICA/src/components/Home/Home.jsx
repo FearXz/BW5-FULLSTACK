@@ -2,18 +2,19 @@ import { useDispatch } from "react-redux";
 import { Container, Row, Col, Button, Card, Carousel } from "react-bootstrap";
 import { fetchListaProprietari } from "../../redux/actions/proprietario";
 import { useEffect, useRef } from "react";
+import Footer from "../Footer";
 
 function Home() {
   const dispatch = useDispatch();
 
-  window.addEventListener('scroll', function() {
-    var infoBlock = document.querySelector('.infoBlock');
+  window.addEventListener("scroll", function () {
+    var infoBlock = document.querySelector(".infoBlock");
     var top = infoBlock.getBoundingClientRect().top;
-  
-    if(top <= window.innerHeight) {
-      infoBlock.classList.add('animate');
+
+    if (top <= window.innerHeight) {
+      infoBlock.classList.add("animate");
     } else {
-      infoBlock.classList.remove('animate');
+      infoBlock.classList.remove("animate");
     }
   });
 
@@ -138,6 +139,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
