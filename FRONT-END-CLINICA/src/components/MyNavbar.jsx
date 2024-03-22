@@ -54,7 +54,7 @@ function MyNavbar() {
             </NavDropdown.Item>
           </NavDropdown>
 
-          <NavDropdown title="Ricoveri" id="basic-nav-dropdown" className="me-auto custom-dropdown">
+          <NavDropdown title="Ricoveri" id="basic-nav-dropdown" className=" custom-dropdown">
             <NavDropdown.Item to={"/Ricovero"} as={NavLink} className={""}>
               Lista ricoveri
             </NavDropdown.Item>
