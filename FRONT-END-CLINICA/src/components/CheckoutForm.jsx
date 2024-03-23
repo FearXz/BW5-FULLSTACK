@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
 import { url } from "../functions/config";
+import { useNavigate } from "react-router-dom";
 
 const localhost = url;
 
@@ -11,6 +12,7 @@ const stripePromise = loadStripe(
 
 const CheckoutForm = () => {
   const cart = useSelector((state) => state.cart.cart);
+  const navigate = useNavigate();
   console.log(cart);
 
   const [sessionId, setSessionId] = useState("");
@@ -39,6 +41,7 @@ const CheckoutForm = () => {
         if (res.ok) {
           return res.json();
         } else {
+          navigate("/carrello");
           throw new Error("Errore nella creazione della sessione");
         }
       })
